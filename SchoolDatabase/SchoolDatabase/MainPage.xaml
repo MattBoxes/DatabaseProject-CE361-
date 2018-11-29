@@ -9,6 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,726,0,0" VerticalAlignment="Top" Width="587" FontSize="32"/>
+        <CheckBox x:Name="remMeChkBox" Content="Remember Me?" HorizontalAlignment="Left" Height="58" Margin="457,663,0,0" VerticalAlignment="Top" Width="437" FontSize="36" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <CheckBox.RenderTransform>
+                <CompositeTransform Rotation="0"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="267" Margin="0,104,0,0" VerticalAlignment="Top" Width="338" Source="Assets/SDSULOGO.png"/>
 
     </Grid>
 </Page>
