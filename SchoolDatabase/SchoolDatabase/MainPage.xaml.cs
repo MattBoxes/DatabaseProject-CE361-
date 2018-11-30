@@ -31,15 +31,9 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
-        private void btnCreateAcc_click(object sender, RoutedEventArgs e)
+        private void userField_TextChanged(object sender, TextChangedEventArgs e)
         {
-            SQLiteConnection dbConnection = new SQLiteConnection("Folders.db");
-            string sSQL = @"CREATE TABLE IF NOT EXISTS Folders 
-                    (IDFolder Integer Primary Key Autoincrement NOT NULL 
-                        , Foldername VARCHAR(200) 
-                        , Path VARCHAR(255));";
-            ISQLiteStatement cnStatement = dbConnection.Prepare(sSQL);
-            cnStatement.Step();
+
         }
     }
 }
