@@ -35,5 +35,10 @@ namespace SchoolDatabase
         {
 
         }
+
+        private void btnLogin(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

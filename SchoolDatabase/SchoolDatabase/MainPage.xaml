@@ -15,7 +15,9 @@
             <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
         </Grid.FocusVisualPrimaryBrush>
 
-        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,726,0,0" VerticalAlignment="Top" Width="587" FontSize="32"/>
+        <Button x:Name="loginButton" Content="Login" 
+                Click="btnLogin"
+                HorizontalAlignment="Center" Height="62" Margin="0,726,0,0" VerticalAlignment="Top" Width="587" FontSize="32"/>
         <CheckBox x:Name="remMeChkBox" Content="Remember Me?" HorizontalAlignment="Left" Height="63" Margin="457,658,0,0" VerticalAlignment="Top" Width="437" FontSize="36" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Padding="10,0,0,20">
             <CheckBox.RenderTransform>
                 <CompositeTransform Rotation="0"/>
