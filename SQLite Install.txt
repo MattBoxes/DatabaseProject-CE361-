@@ -1,0 +1,5 @@
+Install and use SQLite:
+
+https://www.youtube.com/watch?v=npXC3bQzqlw&t=253s
+
+https://www.youtube.com/watch?v=TrJcKHMe6Y8
