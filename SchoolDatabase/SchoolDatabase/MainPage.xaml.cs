@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLitePCL;
+using Windows.Storage;
 
 // TEE HEE
 
@@ -27,6 +29,17 @@ namespace SchoolDatabase
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        private void btnCreateAcc_click(object sender, RoutedEventArgs e)
+        {
+            SQLiteConnection dbConnection = new SQLiteConnection("Folders.db");
+            string sSQL = @"CREATE TABLE IF NOT EXISTS Folders 
+                    (IDFolder Integer Primary Key Autoincrement NOT NULL 
+                        , Foldername VARCHAR(200) 
+                        , Path VARCHAR(255));";
+            ISQLiteStatement cnStatement = dbConnection.Prepare(sSQL);
+            cnStatement.Step();
         }
     }
 }
