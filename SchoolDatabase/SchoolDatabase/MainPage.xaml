@@ -8,5 +8,10 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid/>
+    <Grid>
+        <Button x:Name="btnCreateAcc" Content="Create New Account"
+                Click="btnCreateAcc_click" 
+                HorizontalAlignment="Left" Height="151" Margin="108,127,0,0" VerticalAlignment="Top" Width="256"/>
+
+    </Grid>
 </Page>
