@@ -30,5 +30,10 @@ namespace SchoolDatabase
         {
             this.InitializeComponent();
         }
+
+        private void userField_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

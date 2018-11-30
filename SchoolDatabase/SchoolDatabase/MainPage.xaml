@@ -8,5 +8,24 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid/>
+
+    <Grid>
+
+        <Grid.FocusVisualPrimaryBrush>
+            <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
+        </Grid.FocusVisualPrimaryBrush>
+
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,726,0,0" VerticalAlignment="Top" Width="587" FontSize="32"/>
+        <CheckBox x:Name="remMeChkBox" Content="Remember Me?" HorizontalAlignment="Left" Height="63" Margin="457,658,0,0" VerticalAlignment="Top" Width="437" FontSize="36" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Padding="10,0,0,20">
+            <CheckBox.RenderTransform>
+                <CompositeTransform Rotation="0"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="267" Margin="0,104,0,0" VerticalAlignment="Top" Width="338" Source="Assets/SDSULOGO.png"/>
+        <ListView HorizontalAlignment="Center" Height="176" VerticalAlignment="Top" Width="987" Margin="0,482,0,0">
+            <TextBox x:Name="userField" Text="" Height="70" Width="933" RequestedTheme="Light" TextChanged="userField_TextChanged" Margin="12,0,12,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Username"/>
+            <TextBox x:Name="userField_Copy" Text="" Height="70" Width="933" RequestedTheme="Default" TextChanged="userField_TextChanged" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Margin="12,10,12,30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PlaceholderText="Password" Visibility="Visible"/>
+        </ListView>
+
+    </Grid>
 </Page>
