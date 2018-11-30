@@ -10,6 +10,7 @@
 
 
     <Grid>
+
         <Grid.FocusVisualPrimaryBrush>
             <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
         </Grid.FocusVisualPrimaryBrush>
