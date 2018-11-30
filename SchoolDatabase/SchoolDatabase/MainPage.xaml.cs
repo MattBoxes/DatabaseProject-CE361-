@@ -31,6 +31,8 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
+        //conflict
+
         private void btnCreateAcc_click(object sender, RoutedEventArgs e)
         {
             SQLiteConnection dbConnection = new SQLiteConnection("Folders.db");
