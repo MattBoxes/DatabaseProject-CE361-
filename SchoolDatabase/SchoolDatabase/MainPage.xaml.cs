@@ -14,6 +14,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using SQLitePCL;
 using Windows.Storage;
+using DataAccessLibrary;
 
 // TEE HEE
 
@@ -34,6 +35,13 @@ namespace SchoolDatabase
         private void userField_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void AddData(object sender, RoutedEventArgs e)
+        {
+            DataAccess.AddData(Input_Box.Text);
+
+            Output.ItemsSource = DataAccess.GetData();
         }
     }
 }
