@@ -26,9 +26,6 @@
             <TextBox x:Name="userField" Text="" Height="70" Width="933" RequestedTheme="Light" TextChanged="userField_TextChanged" Margin="12,0,12,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Username"/>
             <TextBox x:Name="userField_Copy" Text="" Height="70" Width="933" RequestedTheme="Default" TextChanged="userField_TextChanged" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Margin="12,10,12,30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PlaceholderText="Password" Visibility="Visible"/>
         </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="72" Margin="216,369,0,0" VerticalAlignment="Top" Width="84"/>
-        <Button Content="Button" HorizontalAlignment="Left" Height="96" Margin="159,129,0,0" VerticalAlignment="Top" Width="177"/>
 
     </Grid>
 </Page>
