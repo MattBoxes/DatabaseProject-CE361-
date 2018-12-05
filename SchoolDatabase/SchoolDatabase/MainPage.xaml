@@ -11,7 +11,7 @@
 
     <Grid>
 
-        <!--<Grid.FocusVisualPrimaryBrush>
+        <Grid.FocusVisualPrimaryBrush>
             <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
         </Grid.FocusVisualPrimaryBrush>
 
@@ -25,8 +25,8 @@
         <Grid HorizontalAlignment="Center" Height="176" VerticalAlignment="Top" Width="987" Margin="0,482,0,0">
             <TextBox x:Name="userField" Text="" Height="70" Width="933" RequestedTheme="Light" TextChanged="userField_TextChanged" Margin="27,21,27,85" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Username" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
             <TextBox x:Name="userField_Copy" Text="" Height="70" Width="933" RequestedTheme="Default" TextChanged="userField_TextChanged" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Margin="27,-61,27,167" PlaceholderText="Password" Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        </Grid>-->
-        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        </Grid>
+        <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <StackPanel>
                 <TextBox Name="Input_Box"></TextBox>
                 <Button Click="AddData">Add</Button>
@@ -38,7 +38,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </StackPanel>
-        </Grid>
+        </Grid>-->
 
     </Grid>
 </Page>
