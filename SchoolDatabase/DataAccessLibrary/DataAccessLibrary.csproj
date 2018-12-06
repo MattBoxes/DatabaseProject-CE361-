@@ -106,8 +106,11 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Course.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
     <EmbeddedResource Include="Properties\DataAccessLibrary.rd.xml" />
   </ItemGroup>
   <ItemGroup>
