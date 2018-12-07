@@ -10,16 +10,17 @@
 
     <Grid>
         <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
-        <ComboBox x:Name="ChoosePositionToAdd" HorizontalAlignment="Left" Margin="170,139,0,0" VerticalAlignment="Top" Height="44" Width="258" PlaceholderText="Select Type of Position to Add...">
+        <ComboBox x:Name="ChoosePositionToAdd" HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Height="44" Width="258" PlaceholderText="Select Type of Position to Add...">
             <ComboBoxItem Content="Admin"/>
             <ComboBoxItem Content="Professor"/>
             <ComboBoxItem Content="Student"/>
         </ComboBox>
 
-        <Grid Margin="429,121,169,0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="150">
+        <Grid Margin="373,121,225,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">
             <TextBox x:Name="Username" Text="" RequestedTheme="Light" Margin="29,16,449,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText=" New Username" Visibility="Visible"/>
-            <TextBox x:Name="Password" Text="" RequestedTheme="Light" Margin="458,16,18,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="New Password" Visibility="Visible"/>
+            <TextBox x:Name="Password" Text="" RequestedTheme="Light" Margin="470,16,6,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="New Password" Visibility="Visible" HorizontalAlignment="Stretch"/>
         </Grid>
+        <Button x:Name="AddPosition" Content="Add" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
 
     </Grid>
 </Page>
