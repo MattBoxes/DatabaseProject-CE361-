@@ -1,16 +1,26 @@
-﻿<UserControl
-    x:Class="SchoolDatabase.MyUserControl1"
+﻿<Page
+    x:Class="SchoolDatabase.AdminPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SchoolDatabase"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button Content="Button" HorizontalAlignment="Left" Height="48" Margin="23,10,0,0" VerticalAlignment="Top" Width="83"/>
+        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
+        <ComboBox x:Name="ChoosePositionToAdd" HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Height="44" Width="258" PlaceholderText="Select Type of Position to Add...">
+            <ComboBoxItem Content="Admin"/>
+            <ComboBoxItem Content="Professor"/>
+            <ComboBoxItem Content="Student"/>
+        </ComboBox>
+
+        <Grid Margin="373,121,225,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">
+            <TextBox x:Name="Username" Text="" RequestedTheme="Light" Margin="29,16,449,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText=" New Username" Visibility="Visible"/>
+            <TextBox x:Name="Password" Text="" RequestedTheme="Light" Margin="470,16,6,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="New Password" Visibility="Visible" HorizontalAlignment="Stretch"/>
+        </Grid>
+        <Button x:Name="AddPosition" Content="Add" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
 
     </Grid>
-</UserControl>
+</Page>

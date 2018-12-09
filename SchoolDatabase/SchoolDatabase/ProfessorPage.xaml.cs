@@ -12,33 +12,24 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using SQLitePCL;
-using Windows.Storage;
 
-// TEE HEE
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace SchoolDatabase
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class ProfessorPage : Page
     {
-        public MainPage()
+        public ProfessorPage()
         {
             this.InitializeComponent();
         }
 
-        private void userField_TextChanged(object sender, TextChangedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void btnLogin(object sender, RoutedEventArgs e)
-        {
-
+            this.Frame.Navigate(typeof(LoginPage));
         }
     }
 }
