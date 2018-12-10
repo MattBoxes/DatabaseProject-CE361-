@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    class Admin
+    public class Admin : IComparable<Admin>
     {
         public string Name { get; set; }
         public short Id { get; set; }
@@ -25,5 +25,9 @@ namespace DataAccessLibrary
             this.Id = cId;
         }
 
+        public Admin addCourse(string courseName)
+        {
+
+        }
     }
 }
