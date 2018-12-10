@@ -6,19 +6,19 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    class Course
+    public class Course
     {
         public string Name { get; set; }
 
-        public short Id { get; set; }
+        public string Id { get; set; }
 
-        public char Grade { get; set; }
+        public int Grade { get; set; }
 
         public List<Student> ListOfStudents { get; set; }
 
         public Professor Prof { get; set; }
 
-        public Course(string inName, short inID)
+        public Course(string inName, string inID)
         {
             this.Name = inName;
             this.Id = inID;
