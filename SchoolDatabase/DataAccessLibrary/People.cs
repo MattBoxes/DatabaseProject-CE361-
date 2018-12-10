@@ -23,5 +23,11 @@ namespace DataAccessLibrary
             this.Id = id;
             this.Password = pw;
         }
+
+        public override string ToString()
+        {
+            
+        }
+        
     }
 }
