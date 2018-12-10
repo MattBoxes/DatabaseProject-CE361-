@@ -42,6 +42,7 @@ namespace SchoolDatabase
             this.Frame.Navigate(typeof(LoginPage));
         }
 
+
         private void AddCourse_Click(object sender, RoutedEventArgs e)
         {
             var add = conn.Insert(new Course(Course_Name.Text, Course_ID.Text));
@@ -56,6 +57,11 @@ namespace SchoolDatabase
                 result = "{Course.Id} : {Course.Name}";
                 Listv.Items.Add(result);
             }
+        }
+
+        private void btnLogin(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
