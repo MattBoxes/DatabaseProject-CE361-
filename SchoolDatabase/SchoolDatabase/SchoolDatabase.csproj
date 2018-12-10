@@ -156,8 +156,14 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.9</Version>
     </PackageReference>
-    <PackageReference Include="SQLitePCL">
-      <Version>3.8.7.2</Version>
+    <PackageReference Include="sqlite-net-pcl">
+      <Version>1.5.231</Version>
+    </PackageReference>
+    <PackageReference Include="SQLite.Net-PCL-Silverlight">
+      <Version>2.5.3</Version>
+    </PackageReference>
+    <PackageReference Include="SQLite.Net.Platform.WinRT">
+      <Version>2.5.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

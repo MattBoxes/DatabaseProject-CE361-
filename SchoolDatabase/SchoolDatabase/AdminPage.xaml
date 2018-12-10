@@ -17,10 +17,22 @@
         </ComboBox>
 
         <Grid Margin="373,121,225,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">
-            <TextBox x:Name="Username" Text="" RequestedTheme="Light" Margin="29,16,449,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText=" New Username" Visibility="Visible"/>
+            <TextBox x:Name="Username" Text="" RequestedTheme="Light" Margin="29,16,449,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText=" New User ID" Visibility="Visible"/>
             <TextBox x:Name="Password" Text="" RequestedTheme="Light" Margin="470,16,6,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="New Password" Visibility="Visible" HorizontalAlignment="Stretch"/>
         </Grid>
         <Button x:Name="AddPosition" Content="Add" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
+        <TextBlock x:Name="User" HorizontalAlignment="Left" Margin="110,103,0,0" Text="Users" TextWrapping="Wrap" VerticalAlignment="Top"  Height="28" Width="104" FontSize="20" FontFamily="Adobe Caslon Pro Bold" FontWeight="Bold"/>
+        <TextBlock x:Name="Courses" HorizontalAlignment="Left" Margin="110,236,0,0" Text="Courses" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20"/>
+        <TextBox x:Name="Course_ID" Text="" RequestedTheme="Light" Margin="400,265,676,690" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Width="424" Height="45" PlaceholderText="Course ID" Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="Course_Name" Text="" RequestedTheme="Light" Margin="843,264,230,691" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Width="427" Height="45" PlaceholderText="Course Name" Visibility="Visible"/>
+        <Button x:Name="AddCourse" Content="Add" HorizontalAlignment="Stretch" Margin="1306,265,111,0" VerticalAlignment="Top" Height="44" Click="AddCourse_Click"/>
+        <Grid HorizontalAlignment="Center" Height="75" Margin="0,359,0,0" VerticalAlignment="Top" Width="1279">
+            <Button x:Name="ShowUsersButton" Content="Show Users" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="630" FontSize="20" FontWeight="Bold"/>
+            <Button x:Name="ShowCoursesButton" Content="Show Courses" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Width="624" FontSize="20" FontWeight="Bold" Click="ShowCoursesButton_Click"/>
+        </Grid>
+        <ListView x:Name="Listv" HorizontalAlignment="Center" Height="477" Margin="0,439,0,0" VerticalAlignment="Top" Width="1278"/>
 
     </Grid>
+
+
 </Page>
