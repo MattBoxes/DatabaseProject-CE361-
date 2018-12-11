@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLibrary
 {
-    class Student
+    public class Student
     {
     }
 }
