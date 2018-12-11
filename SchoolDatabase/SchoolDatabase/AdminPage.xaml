@@ -6,21 +6,34 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1498.5">
 
-    <Grid>
+    <Grid Margin="0,2,0,-2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
-        <ComboBox x:Name="ChoosePositionToAdd" HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Height="44" Width="258" PlaceholderText="Select Type of Position to Add...">
+        <ComboBox x:Name="SelectPositionToAddComboBox" HorizontalAlignment="Left" Margin="110,139,0,0" VerticalAlignment="Top" Height="44" Width="258" PlaceholderText="Select Type of Position to Add...">
             <ComboBoxItem Content="Admin"/>
             <ComboBoxItem Content="Professor"/>
             <ComboBoxItem Content="Student"/>
         </ComboBox>
 
-        <Grid Margin="373,121,225,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">
-            <TextBox x:Name="Username" Text="" RequestedTheme="Light" Margin="29,16,449,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText=" New Username" Visibility="Visible"/>
-            <TextBox x:Name="Password" Text="" RequestedTheme="Light" Margin="470,16,6,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="New Password" Visibility="Visible" HorizontalAlignment="Stretch"/>
+        <Grid Margin="385,121,213,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">
+            <TextBox x:Name="UsernameTextBox" Text="" RequestedTheme="Light" Margin="18,17,460,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="New Username" Visibility="Visible" Height="44" Grid.RowSpan="2" VerticalAlignment="Stretch"/>
+            <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="458,17,0,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="New Password" Visibility="Visible" Height="44" HorizontalAlignment="Left" Width="425" Grid.RowSpan="2"/>
         </Grid>
-        <Button x:Name="AddPosition" Content="Add" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
+        <Button x:Name="AddUserButton" Content="Add User" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
+        <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="1125,0,0,0" VerticalAlignment="Center" Height="44" Width="275"/>
+        <Button x:Name="AssignProfessorToTeachClassButton" Content="Assign Professor to Teach Class" HorizontalAlignment="Left" Margin="1125,545,0,0" VerticalAlignment="Top" Height="43" Width="275"/>
+        <TextBox x:Name="ClassNameTextBox" HorizontalAlignment="Left" Margin="110,255,0,0" PlaceholderText="Class Name" VerticalAlignment="Top" BorderThickness="2,2,2,2" Opacity="0.9" Height="44" Width="286" FontSize="24" Visibility="Visible"/>
+        <Button x:Name="AddClassButton" Content="Add Class" HorizontalAlignment="Left" Margin="437,255,0,0" VerticalAlignment="Top" Height="44" Width="125"/>
+        <ComboBox x:Name="SelectTypeOfPositionToDisplayComboBox" HorizontalAlignment="Left" Margin="110,375,0,0" VerticalAlignment="Top" PlaceholderText="Select Type of Position to Display..." Height="44" Width="286">
+            <ComboBoxItem Content="Admin"/>
+            <ComboBoxItem Content="Professor"/>
+            <ComboBoxItem Content="Student"/>
+        </ComboBox>
+        <Button x:Name="DisplayPositionButton" Content="Display Position" HorizontalAlignment="Left" Margin="437,375,0,0" VerticalAlignment="Top" Height="44"/>
+        <Button x:Name="DisplayClassesButton" Content="Display Classes" HorizontalAlignment="Left" Margin="609,374,0,0" VerticalAlignment="Top" Height="44" Width="125"/>
+        <Button x:Name="RemoveProfessorfromTeachingClassButton" Content="Remove Professor from Teaching Class" HorizontalAlignment="Left" Margin="1125,610,0,0" VerticalAlignment="Top" Height="44"/>
+        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
 
     </Grid>
 </Page>
