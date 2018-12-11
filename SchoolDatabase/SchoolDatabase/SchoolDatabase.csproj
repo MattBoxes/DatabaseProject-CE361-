@@ -165,6 +165,9 @@
     <PackageReference Include="SQLite.Net.Platform.WinRT">
       <Version>2.5.1</Version>
     </PackageReference>
+    <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
+      <Version>1.1.11</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccessLibrary\DataAccessLibrary.csproj">

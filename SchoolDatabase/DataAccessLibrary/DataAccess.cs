@@ -14,8 +14,7 @@ namespace DataAccessLibrary
         /// </summary>
         public static void InitializeDatabase()
         {
-            using (SqliteConnection db =
-                new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
                 db.Open();
 
@@ -36,7 +35,7 @@ namespace DataAccessLibrary
         public static void AddData(string inputText)
         {
             using (SqliteConnection db =
-                new SqliteConnection("Filename=sqliteSample.db"))
+                new SqliteConnection("Filename=schoolDB.db"))
             {
                 db.Open();
 

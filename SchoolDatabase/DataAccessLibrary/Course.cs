@@ -10,15 +10,13 @@ namespace DataAccessLibrary
     {
         public string Name { get; set; }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
-        public int Grade { get; set; }
+        public int StudentId { get; set; }
 
-        public List<Student> ListOfStudents { get; set; }
+        public int ProfessorId { get; set; }
 
-        public Professor Prof { get; set; }
-
-        public Course(string inName, string inID)
+        public Course(string inName, int inID)
         {
             this.Name = inName;
             this.Id = inID;

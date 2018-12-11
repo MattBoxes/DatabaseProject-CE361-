@@ -27,14 +27,12 @@ namespace SchoolDatabase
     public sealed partial class AdminPage : Page
     {
         string path;
-        SQLite.Net.SQLiteConnection conn; 
+        SQLite.Net.SQLiteConnection conn;
+        Admin adminInUse = new Admin("Xavier", "Truong", "90000", "abc123");
 
         public AdminPage()
         {
             this.InitializeComponent();
-            path = Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "SchoolDB.db");
-            conn = new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), path);
-            conn.CreateTable<Course>();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -45,18 +43,12 @@ namespace SchoolDatabase
 
         private void AddCourse_Click(object sender, RoutedEventArgs e)
         {
-            var add = conn.Insert(new Course(Course_Name.Text, Course_ID.Text));
+            adminInUse.AddCourse(Course_ID.Text, Course_Name.Text);
         }
 
         private void ShowCoursesButton_Click(object sender, RoutedEventArgs e)
         {
-            var query = conn.Table<Course>();
-            string result = String.Empty;
-            foreach (var item in query)
-            {
-                result = "{Course.Id} : {Course.Name}";
-                Listv.Items.Add(result);
-            }
+            adminInUse.viewListOfCourses();
         }
 
         private void btnLogin(object sender, RoutedEventArgs e)

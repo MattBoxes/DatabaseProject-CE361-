@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 
 namespace DataAccessLibrary
 {
     public class Admin : People,IComparable
-
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
@@ -15,30 +15,39 @@ namespace DataAccessLibrary
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
         public Admin(string firstname, string lastname, string id, string pw)
-            : base(firstname, lastname, id, pw)
+            : base(firstname, lastname, id, pw)  {}
+
+
+        public void AddCourse(string courseID, string courseName)
         {
-            this.FirstName = firstname;
-            this.LastName = lastname;
-            this.Id = id;
-            this.Password = pw;
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT INTO Course (CourseId, CourseName) " +
+                                                        $"VALUES ({courseID}, {courseName})";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
-        public Admin addCourse(string courseName)
+        public void removeCourse(string courseName)
         {
 
         }
-        public Admin removeCourse(string courseName)
+        public void editCourseName(string courseName, string newCourseName)
         {
 
         }
-        public Admin editCourseName(string courseName, string newCourseName)
+        public void addUser(string firstname, string lastname, string id, string pw)
         {
 
         }
-        public Admin addUser(string firstname, string lastname, string id, string pw)
-        {
-
-        }
-        public Admin removeUser(string firstname, string lastname)
+        public void removeUser(string firstname, string lastname)
         {
 
         }
@@ -66,9 +75,36 @@ namespace DataAccessLibrary
         {
 
         }
-        public Admin viewListOfCourses()
+        public void viewListOfCourses()
         {
+            List<string> CourseIds = new List<string>();
+            List<string> CourseNames = new List<string>();
 
+            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT Course_ID from Course", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIds.Add(query.GetString(0));
+                }
+
+                selectCommand.CommandText = "SELECT Course_Name from Course";
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            //TO DO: show the 2 lists in listview
         }
         public Admin viewListOfUsers()
         {
