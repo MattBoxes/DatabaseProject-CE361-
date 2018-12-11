@@ -15,6 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using DataAccessLibrary;
+using Windows.UI.ViewManagement;
 
 namespace SchoolDatabase
 {
@@ -33,6 +34,10 @@ namespace SchoolDatabase
             this.Suspending += OnSuspending;
 
             DataAccess.InitializeDatabase();
+
+            ApplicationView.PreferredLaunchViewSize = new Size { Height = 1000, Width = 1500 };
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
         }
 
         /// <summary>

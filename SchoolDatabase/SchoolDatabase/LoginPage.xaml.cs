@@ -30,17 +30,17 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
-        private void loginButton_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            if(ChoosePosition.SelectedIndex == 0)
+            if(SelectPositionComboBox.SelectedIndex == 0)
             {
                 this.Frame.Navigate(typeof(AdminPage));
             }
-            else if(ChoosePosition.SelectedIndex == 1)
+            else if(SelectPositionComboBox.SelectedIndex == 1)
             {
                 this.Frame.Navigate(typeof(ProfessorPage));
             }
-            else if(ChoosePosition.SelectedIndex == 2)
+            else if(SelectPositionComboBox.SelectedIndex == 2)
             {
                 this.Frame.Navigate(typeof(StudentPage));
             }
