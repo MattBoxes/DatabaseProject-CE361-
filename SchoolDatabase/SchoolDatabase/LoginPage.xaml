@@ -1,0 +1,45 @@
+﻿<Page
+    x:Class="SchoolDatabase.LoginPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SchoolDatabase"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
+
+        <Grid.FocusVisualPrimaryBrush>
+            <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
+        </Grid.FocusVisualPrimaryBrush>
+
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,739,0,0" VerticalAlignment="Top" Width="587" FontSize="32" Click="LoginButton_Click"/>
+        <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="267" Margin="0,104,0,0" VerticalAlignment="Top" Width="338" Source="Assets/SDSULOGO.png"/>
+        <Grid HorizontalAlignment="Center" Height="158" VerticalAlignment="Top" Width="999" Margin="0,524,0,0">
+            <TextBox x:Name="UsernameTextBox" Text="" RequestedTheme="Light" Margin="27,16,27.2,89" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Username" Visibility="Visible" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+            <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="27,86,26,19"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Password" Visibility="Visible"/>
+        </Grid>
+        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
+        <ComboBox x:Name="SelectPositionComboBox" HorizontalAlignment="Center" Margin="0,425,0,0" VerticalAlignment="Top" Height="44" Width="159" PlaceholderText="Select Position...">
+            <ComboBoxItem Content="Admin"/>
+            <ComboBoxItem Content="Professor"/>
+            <ComboBoxItem Content="Student"/>
+        </ComboBox>
+        <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <StackPanel>
+                <TextBox Name="Input_Box"></TextBox>
+                <Button Click="AddData">Add</Button>
+                <ListView Name="Output">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackPanel>
+        </Grid>-->
+
+    </Grid>
+</Page>

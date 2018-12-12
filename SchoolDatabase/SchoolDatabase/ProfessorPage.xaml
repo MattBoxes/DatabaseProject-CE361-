@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="SchoolDatabase.ProfessorPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SchoolDatabase"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
+        <Button x:Name="DisplayYourClassesButton" Content="Display Your Classes" HorizontalAlignment="Left" Margin="161,178,0,0" VerticalAlignment="Top" Height="45" Width="182"/>
+        <Button x:Name="DropStudentFromClassButton" Content="Drop Student from Class" HorizontalAlignment="Left" Margin="1182,321,0,0" VerticalAlignment="Top" Height="44"/>
+        <ComboBox HorizontalAlignment="Left" Margin="1182,482,0,0" VerticalAlignment="Top" Height="44" PlaceholderText="Select Grade..." ScrollViewer.VerticalScrollBarVisibility="Auto" Width="182">
+            <ComboBoxItem Content="A"/>
+            <ComboBoxItem Content="A-"/>
+            <ComboBoxItem Content="B+"/>
+            <ComboBoxItem Content="B"/>
+            <ComboBoxItem Content="B-"/>
+            <ComboBoxItem Content="C+"/>
+            <ComboBoxItem Content="C"/>
+            <ComboBoxItem Content="C-"/>
+            <ComboBoxItem Content="D+"/>
+            <ComboBoxItem Content="D"/>
+            <ComboBoxItem Content="D-"/>
+            <ComboBoxItem Content="F"/>
+        </ComboBox>
+        <Button x:Name="ChangeGradeButton" Content="Change Grade" HorizontalAlignment="Left" Margin="1182,706,0,0" VerticalAlignment="Top" Height="44" Width="182"/>
+        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
+
+    </Grid>
+</Page>
