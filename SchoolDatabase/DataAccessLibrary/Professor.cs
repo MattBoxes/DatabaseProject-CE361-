@@ -11,7 +11,7 @@ namespace DataAccessLibrary
         public string Prof_Degree;
         public List<Course> ListOfCourses;
 
-        public Professor(string firstname, string lastname, string id, string pw, string degree)
+        public Professor(string firstname, string lastname, int id, string pw, string degree)
             : base(firstname, lastname, id, pw)
         {
             this.Prof_Degree = degree;
