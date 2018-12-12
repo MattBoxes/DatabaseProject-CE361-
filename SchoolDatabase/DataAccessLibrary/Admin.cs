@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.Sqlite;
 using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
     public class Admin : People,IComparable<Admin>
-
+    
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
@@ -16,17 +17,25 @@ namespace DataAccessLibrary
         /// <summary>
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
-        public Admin(string firstname, string lastname, int id, string pw)
-            : base(firstname, lastname, id, pw)
+        public Admin(string firstname, string lastname, string id, string pw)
+            : base(firstname, lastname, id, pw)  {}
+      
+        public void AddCourse(string courseID, string courseName)
         {
-            this.FirstName = firstname;
-            this.LastName = lastname;
-            this.Id = id;
-            this.Password = pw;
-        }
-        public void addCourse(string courseName)
-        {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
 
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT INTO Course (CourseId, CourseName) " +
+                                                        $"VALUES ({courseID}, {courseName})";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
         public void removeCourse(string courseName)
         {
@@ -70,7 +79,34 @@ namespace DataAccessLibrary
         }
         public void viewListOfCourses()
         {
-            throw new NotImplementedException();
+            List<string> CourseIds = new List<string>();
+            List<string> CourseNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT Course_ID from Course", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIds.Add(query.GetString(0));
+                }
+
+                selectCommand.CommandText = "SELECT Course_Name from Course";
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            //TO DO: show the 2 lists in listview
         }
         public void viewListOfUsers()
         {

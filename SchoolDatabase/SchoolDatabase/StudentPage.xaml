@@ -10,6 +10,9 @@
 
     <Grid>
         <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
-
+        <Button x:Name="DisplayAllClassesButton" Content="Display All Classes" HorizontalAlignment="Left" Margin="577,146,0,0" VerticalAlignment="Top" Height="44" Width="154"/>
+        <Button x:Name="DisplayYourInfoButton" Content="Display Your Info" HorizontalAlignment="Left" Margin="212,146,0,0" VerticalAlignment="Top" Height="44" Width="154"/>
+        <Button x:Name="EnrollInClassButton" Content="Enroll in Class" HorizontalAlignment="Left" Margin="1198,408,0,0" VerticalAlignment="Top" Height="44" Width="154"/>
+        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
     </Grid>
 </Page>
