@@ -41,7 +41,7 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Object requirement #1 - CompareTo
+        /// Object requirement #1 - CompareTo()
         /// Implement try and catch blocks
         /// Compare: last names -> first names -> Id
         /// </summary>
@@ -73,6 +73,15 @@ namespace DataAccessLibrary
                 DisplayInvalidEntry(); // Call warning message object
                 return -1;
             }
+        }
+
+        /// <summary>
+        /// Object requirment #2 - GetHashCode()
+        /// </summary>
+        /// <returns></returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         
     }
