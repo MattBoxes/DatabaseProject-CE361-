@@ -9,6 +9,9 @@ namespace DataAccessLibrary
 {
     public class Student : People, IComparable <Student> // Implement Icomparable with class People
     {
+        // List users for students
+        List<People> ListOfUsers;
+
         // Variables in scope
         public string Student_Major; 
 
