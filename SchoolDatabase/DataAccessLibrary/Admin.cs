@@ -14,7 +14,7 @@ namespace DataAccessLibrary
         /// <summary>
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
-        public Admin(string firstname, string lastname, string id, string pw)
+        public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
 
 
@@ -27,60 +27,85 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Course (CourseId, CourseName) " +
-                                                        $"VALUES ({courseID}, {courseName})";
+                insertCommand.CommandText = "INSERT INTO Course (Course_ID, Course_Name) " +
+                                                        $"VALUES ('{courseID}', '{courseName}')";
 
                 insertCommand.ExecuteReader();
 
                 db.Close();
             }
         }
-        public void removeCourse(string courseName)
+        public void RemoveCourse(string courseName)
         {
 
         }
-        public void editCourseName(string courseName, string newCourseName)
+        public void EditCourseName(string courseName, string newCourseName)
         {
 
         }
-        public void addUser(string firstname, string lastname, string id, string pw)
+        public void AddUser(string firstname, string lastname, string id, string pw)
         {
 
         }
-        public void removeUser(string firstname, string lastname)
+        public void RemoveUser(string firstname, string lastname)
         {
 
         }
-        public Admin editUserName(string nfirstName, string nlastname, string firstname, string lastname)
+        public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
-
+            throw new NotImplementedException();
         }
-        public Admin editStudentGrade(string firstname, string lastname, string coursename, string newGrade)
+        public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
-
+            throw new NotImplementedException();
         }
-        public Admin addStudentToCourse(string firstname, string lastname, string coursename)
+        public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
         {
-
+            throw new NotImplementedException();
         }
-        public Admin addProfToCourse(string firstname, string lastname, string coursename)
+        public Admin AddProfToCourse(string firstname, string lastname, string coursename)
         {
-
+            throw new NotImplementedException();
         }
-        public Admin removeStudentFromCourse(string firstname, string lastname, string coursename)
+        public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
         {
-
+            throw new NotImplementedException();
         }
-        public Admin removeProfFromCourse(string firstname, string lastname, string coursename)
+        public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
         {
-
+            throw new NotImplementedException();
         }
-        public void viewListOfCourses()
+
+
+        public List<string> GetListOfCourseNames()
         {
-            List<string> CourseIds = new List<string>();
             List<string> CourseNames = new List<string>();
 
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT Course_Name from Course", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return CourseNames;
+        }
+
+        public List<string> GetListOfCourseIDs()
+        {
+            List<string> CourseIDs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
                 db.Open();
 
@@ -91,31 +116,28 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    CourseIds.Add(query.GetString(0));
-                }
-
-                selectCommand.CommandText = "SELECT Course_Name from Course";
-
-                while (query.Read())
-                {
-                    CourseNames.Add(query.GetString(0));
+                    CourseIDs.Add(query.GetString(0));
                 }
 
                 db.Close();
             }
 
-            //TO DO: show the 2 lists in listview
+            return CourseIDs;
         }
-        public Admin viewListOfUsers()
+
+
+        public Admin ViewListOfUsers()
         {
+            throw new NotImplementedException();
+        }
+        public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
+        {
+            throw new NotImplementedException();
 
         }
-        public Admin editStudentMajor(string firstname, string lastname, string newMajor)
+        public Admin PromoteUser(string firstname, string lastname)
         {
-
-        }
-        public Admin promoteUser(string firstname, string lastname)
-        {
+            throw new NotImplementedException();
 
         }
 
@@ -129,13 +151,15 @@ namespace DataAccessLibrary
                 }
                 else
                 {
+                    throw new NotImplementedException();
 
                 }
             }
             catch (NullReferenceException nEx)
             {
-                
-            }           
+                throw new NotImplementedException();
+
+            }
         }
 
     }

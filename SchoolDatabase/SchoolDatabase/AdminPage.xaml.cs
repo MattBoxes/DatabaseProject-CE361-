@@ -28,7 +28,7 @@ namespace SchoolDatabase
     {
         string path;
         SQLite.Net.SQLiteConnection conn;
-        Admin adminInUse = new Admin("Xavier", "Truong", "90000", "abc123");
+        Admin adminInUse = new Admin("Xavier", "Truong", 90000, "abc123");
 
         public AdminPage()
         {
@@ -48,12 +48,14 @@ namespace SchoolDatabase
 
         private void ShowCoursesButton_Click(object sender, RoutedEventArgs e)
         {
-            adminInUse.viewListOfCourses();
+            //adminInUse.ViewListOfCourses();
         }
 
         private void btnLogin(object sender, RoutedEventArgs e)
         {
 
         }
+
+        
     }
 }

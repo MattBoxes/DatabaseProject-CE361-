@@ -12,11 +12,11 @@ namespace DataAccessLibrary
 
         public string LastName { get; set; }
 
-        public string Id { get; set; }
+        public int Id { get; set; }
 
         public string Password { get; set; }
 
-        public People(string firstname, string lastname, string id, string pw)
+        public People(string firstname, string lastname, int id, string pw)
         {
             this.FirstName = firstname;
             this.LastName = LastName;
