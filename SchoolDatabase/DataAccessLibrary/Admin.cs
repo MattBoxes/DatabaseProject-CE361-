@@ -108,6 +108,7 @@ namespace DataAccessLibrary
 
             //TO DO: show the 2 lists in listview
         }
+
         public void viewListOfUsers()
         {
             throw new NotImplementedException();

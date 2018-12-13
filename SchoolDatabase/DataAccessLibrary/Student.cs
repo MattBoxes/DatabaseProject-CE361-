@@ -86,6 +86,16 @@ namespace DataAccessLibrary
         {
             return base.GetHashCode();
         }
-        
+
+        /// <summary>
+        /// Object requirment #3 - ToString()
+        /// Show contents for the student
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName}\n Red ID: {Id}\n Major: {Student_Major}";
+        }
+
     }
 }
