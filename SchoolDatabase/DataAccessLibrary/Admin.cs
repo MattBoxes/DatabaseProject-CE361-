@@ -29,60 +29,92 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Course (CourseId, CourseName) " +
-                                                        $"VALUES ({courseID}, {courseName})";
+                insertCommand.CommandText = "INSERT INTO Course (Course_ID, Course_Name) " +
+                                                        $"VALUES ('{courseID}', '{courseName}')";
 
                 insertCommand.ExecuteReader();
 
                 db.Close();
             }
         }
-        public void removeCourse(string courseName)
+        public void RemoveCourse(string courseName)
         {
 
         }
-        public void editCourseName(string courseName, string newCourseName)
+        public void EditCourseName(string courseName, string newCourseName)
         {
 
         }
-        public void addUser(string firstname, string lastname, string id, string pw)
+        public void AddUser(string firstname, string lastname, string id, string pw)
         {
 
         }
-        public void removeUser(string firstname, string lastname)
+        public void RemoveUser(string firstname, string lastname)
         {
 
         }
-        public void editUserName(string nfirstName, string nlastname, string firstname, string lastname)
-        {
 
-        }
-        public void editStudentGrade(string firstname, string lastname, string coursename, string newGrade)
+        public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
+            throw new NotImplementedException();
+        }
 
-        }
-        public void addStudentToCourse(string firstname, string lastname, string coursename)
+        public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
+            throw new NotImplementedException();
+        }
 
-        }
-        public void addProfToCourse(string firstname, string lastname, string coursename)
+        public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
         {
+            throw new NotImplementedException();
+        }
 
-        }
-        public void removeStudentFromCourse(string firstname, string lastname, string coursename)
+        public Admin AddProfToCourse(string firstname, string lastname, string coursename)
         {
+            throw new NotImplementedException();
+        }
+      
+        public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
+        {
+            throw new NotImplementedException();
+        }
 
-        }
-        public void removeProfFromCourse(string firstname, string lastname, string coursename)
-        {
+        public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
 
-        }
-        public void viewListOfCourses()
         {
-            List<string> CourseIds = new List<string>();
+            throw new NotImplementedException();
+        }
+
+
+        public List<string> GetListOfCourseNames()
+        {
             List<string> CourseNames = new List<string>();
 
-            using (SqliteConnection db = new SqliteConnection("Filename=sqliteSample.db"))
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand
+                    ("SELECT Course_Name from Course", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return CourseNames;
+        }
+
+        public List<string> GetListOfCourseIDs()
+        {
+            List<string> CourseIDs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
                 db.Open();
 
@@ -93,49 +125,48 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    CourseIds.Add(query.GetString(0));
-                }
-
-                selectCommand.CommandText = "SELECT Course_Name from Course";
-
-                while (query.Read())
-                {
-                    CourseNames.Add(query.GetString(0));
+                    CourseIDs.Add(query.GetString(0));
                 }
 
                 db.Close();
             }
 
-            //TO DO: show the 2 lists in listview
+            return CourseIDs;
         }
 
-        public void viewListOfUsers()
+
+
+        public Admin ViewListOfUsers()
         {
             throw new NotImplementedException();
         }
-        public void editStudentMajor(string firstname, string lastname, string newMajor)
+        public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
-        }
-        public void promoteUser(string firstname, string lastname)
-        {
-            throw new NotImplementedException();
-        }
+
+       
 
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
 
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
+        public Admin PromoteUser(string firstname, string lastname)
+        {
+            throw new NotImplementedException();
+}
+
         public override string ToString()
         {
             throw new NotImplementedException();   
         }
+
 
         private async void DisplayInvalidEntry()
         {
@@ -166,6 +197,7 @@ namespace DataAccessLibrary
                         return FirstName.CompareTo(obj.FirstName);
                     }
                     return LastName.CompareTo(obj.LastName);
+
                 }
 
             }
@@ -174,6 +206,7 @@ namespace DataAccessLibrary
                 DisplayInvalidEntry();
                 return -1;
             }           
+
         }
 
     }

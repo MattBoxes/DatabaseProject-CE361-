@@ -22,28 +22,29 @@
             <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="458,17,0,89"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="New Password" Visibility="Visible" Height="44" HorizontalAlignment="Left" Width="425" Grid.RowSpan="2"/>
         </Grid>
         <Button x:Name="AddUserButton" Content="Add User" HorizontalAlignment="Stretch" Margin="1306,139,111,0" VerticalAlignment="Top" Height="44"/>
-        <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="1125,0,0,0" VerticalAlignment="Center" Height="44" Width="275"/>
-        <Button x:Name="AssignProfessorToTeachClassButton" Content="Assign Professor to Teach Class" HorizontalAlignment="Left" Margin="1125,545,0,0" VerticalAlignment="Top" Height="43" Width="275"/>
-        
-        <Button x:Name="AddClassButton" Content="Add Class" HorizontalAlignment="Left" Margin="437,255,0,0" VerticalAlignment="Top" Height="44" Width="125"/>
-        <ComboBox x:Name="SelectTypeOfPositionToDisplayComboBox" HorizontalAlignment="Left" Margin="110,375,0,0" VerticalAlignment="Top" PlaceholderText="Select Type of Position to Display..." Height="44" Width="286">
+        <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="1125,753,0,0" VerticalAlignment="Top" Height="44" Width="275"/>
+        <Button x:Name="AssignProfessorToTeachClassButton" Content="Assign Professor to Teach Class" HorizontalAlignment="Left" Margin="1125,802,0,0" VerticalAlignment="Top" Height="43" Width="275"/>
+
+        <Button x:Name="AddClassButton" Content="Add Class" HorizontalAlignment="Left" Margin="1306,279,0,0" VerticalAlignment="Top" Height="30" Width="103"/>
+        <ComboBox x:Name="SelectTypeOfPositionToDisplayComboBox" HorizontalAlignment="Left" Margin="110,539,0,0" VerticalAlignment="Top" PlaceholderText="Select Type of Position to Display..." Height="44" Width="286">
             <ComboBoxItem Content="Admin"/>
             <ComboBoxItem Content="Professor"/>
             <ComboBoxItem Content="Student"/>
         </ComboBox>
-        <Button x:Name="RemoveProfessorfromTeachingClassButton" Content="Remove Professor from Teaching Class" HorizontalAlignment="Left" Margin="1125,610,0,0" VerticalAlignment="Top" Height="44"/>
+        <Button x:Name="RemoveProfessorfromTeachingClassButton" Content="Remove Professor from Teaching Class" HorizontalAlignment="Left" Margin="1125,850,0,0" VerticalAlignment="Top" Height="44"/>
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
-        
+
         <TextBlock x:Name="User" HorizontalAlignment="Left" Margin="110,103,0,0" Text="Users" TextWrapping="Wrap" VerticalAlignment="Top"  Height="28" Width="104" FontSize="20" FontFamily="Adobe Caslon Pro Bold" FontWeight="Bold"/>
         <TextBlock x:Name="Courses" HorizontalAlignment="Left" Margin="110,236,0,0" Text="Courses" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20"/>
+        <TextBlock x:Name="Display" HorizontalAlignment="Left" Margin="110,482,0,0" Text="Display" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20"/>
+
         <TextBox x:Name="Course_ID" Text="" RequestedTheme="Light" Margin="400,265,676,690" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Width="424" Height="45" PlaceholderText="Course ID" Visibility="Visible" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         <TextBox x:Name="Course_Name" Text="" RequestedTheme="Light" Margin="843,264,230,691" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Width="427" Height="45" PlaceholderText="Course Name" Visibility="Visible"/>
-        
-        <Grid HorizontalAlignment="Center" Height="75" Margin="0,359,0,0" VerticalAlignment="Top" Width="1279">
-            <Button x:Name="ShowUsersButton" Content="Show Users" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center" Width="630" FontSize="20" FontWeight="Bold"/>
-            <Button x:Name="ShowCoursesButton" Content="Show Courses" HorizontalAlignment="Left" Margin="645,0,0,0" VerticalAlignment="Center" Width="624" FontSize="20" FontWeight="Bold" Click="ShowCoursesButton_Click"/>
-        </Grid>
-        <ListView x:Name="Listv" HorizontalAlignment="Center" Height="477" Margin="0,439,0,0" VerticalAlignment="Top" Width="1278"/>
+
+        <Button x:Name="ShowUsersButton" Content="Show Users" HorizontalAlignment="Left" Margin="426,539,0,0" VerticalAlignment="Top" Width="186" FontSize="20" FontWeight="Bold" Height="44"/>
+        <Button x:Name="ShowCoursesButton" Content="Show Courses" HorizontalAlignment="Left" Margin="722,539,0,0" VerticalAlignment="Top" Width="184" FontSize="20" FontWeight="Bold" Click="ShowCoursesButton_Click" Height="44"/>
+
+        <ListView x:Name="Listv" HorizontalAlignment="Left" Height="284" Margin="110,610,0,0" VerticalAlignment="Top" Width="796" SelectionChanged="Listv_SelectionChanged"/>
 
     </Grid>
 

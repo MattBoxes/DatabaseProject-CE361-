@@ -48,12 +48,14 @@ namespace SchoolDatabase
 
         private void ShowCoursesButton_Click(object sender, RoutedEventArgs e)
         {
-            adminInUse.viewListOfCourses();
+            //adminInUse.ViewListOfCourses();
         }
 
         private void btnLogin(object sender, RoutedEventArgs e)
         {
 
         }
+
+        
     }
 }
