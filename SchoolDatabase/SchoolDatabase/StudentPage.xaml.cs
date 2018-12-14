@@ -31,5 +31,10 @@ namespace SchoolDatabase
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
+
+        private void EnrollInCourseButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentEnrollInClassPage));
+        }
     }
 }

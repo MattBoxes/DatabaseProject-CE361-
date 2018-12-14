@@ -9,24 +9,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="26,24,0,0" VerticalAlignment="Top" Height="38" Width="83" Click="BackButton_Click" FontWeight="Bold"/>
-        <Button x:Name="DisplayYourClassesButton" Content="Display Your Classes" HorizontalAlignment="Left" Margin="161,178,0,0" VerticalAlignment="Top" Height="45" Width="182"/>
-        <Button x:Name="DropStudentFromClassButton" Content="Drop Student from Class" HorizontalAlignment="Left" Margin="1182,321,0,0" VerticalAlignment="Top" Height="44"/>
-        <ComboBox HorizontalAlignment="Left" Margin="1182,482,0,0" VerticalAlignment="Top" Height="44" PlaceholderText="Select Grade..." ScrollViewer.VerticalScrollBarVisibility="Auto" Width="182">
-            <ComboBoxItem Content="A"/>
-            <ComboBoxItem Content="A-"/>
-            <ComboBoxItem Content="B+"/>
-            <ComboBoxItem Content="B"/>
-            <ComboBoxItem Content="B-"/>
-            <ComboBoxItem Content="C+"/>
-            <ComboBoxItem Content="C"/>
-            <ComboBoxItem Content="C-"/>
-            <ComboBoxItem Content="D+"/>
-            <ComboBoxItem Content="D"/>
-            <ComboBoxItem Content="D-"/>
-            <ComboBoxItem Content="F"/>
-        </ComboBox>
-        <Button x:Name="ChangeGradeButton" Content="Change Grade" HorizontalAlignment="Left" Margin="1182,706,0,0" VerticalAlignment="Top" Height="44" Width="182"/>
+        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="40" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
+        <Button x:Name="ChangeStudentsGradeEnrollmentButton" Content="Change Student's Grade/Enrollment" HorizontalAlignment="Left" Margin="160,171,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="337" Click="ChangeStudentsGradeEnrollmentButton_Click"/>
+        <Button x:Name="DisplayYourCoursesButton_Copy" Content="Display Your Courses" HorizontalAlignment="Left" Margin="160,270,0,0" VerticalAlignment="Top" Height="45" Width="211" FontWeight="Normal" FontSize="20"/>
+        <ListView x:Name="DisplayYourCoursesListView" Height="523" Margin="155,350,0,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Left"/>
+        <ListView x:Name="StudentsEnrolledInCourseListView" Height="522" Margin="0,351,155,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Right"/>
+        <TextBlock x:Name="StudentsEnrolledInCourseTextBlock" HorizontalAlignment="Left" Margin="794,291,0,0" Text="Students Enrolled in Course" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20" Height="25" Width="265"/>
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
 
     </Grid>

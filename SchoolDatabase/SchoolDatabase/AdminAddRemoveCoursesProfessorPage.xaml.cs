@@ -20,21 +20,16 @@ namespace SchoolDatabase
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class ProfessorPage : Page
+    public sealed partial class AdminAddRemoveCoursesProfessorPage : Page
     {
-        public ProfessorPage()
+        public AdminAddRemoveCoursesProfessorPage()
         {
             this.InitializeComponent();
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(LoginPage));
-        }
-
-        private void ChangeStudentsGradeEnrollmentButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(ProfessorChangeStudentGradeEnrollmentPage));
+            this.Frame.Navigate(typeof(AdminPage));
         }
     }
 }

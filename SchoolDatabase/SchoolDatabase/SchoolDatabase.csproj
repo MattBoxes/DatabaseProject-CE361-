@@ -92,6 +92,15 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AdminAddRemoveCoursePage.xaml.cs">
+      <DependentUpon>AdminAddRemoveCoursePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddRemoveCoursesProfessorPage.xaml.cs">
+      <DependentUpon>AdminAddRemoveCoursesProfessorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAddRemoveUserPage.xaml.cs">
+      <DependentUpon>AdminAddRemoveUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AdminPage.xaml.cs">
       <DependentUpon>AdminPage.xaml</DependentUpon>
     </Compile>
@@ -105,8 +114,14 @@
       <DependentUpon>ProfessorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentEnrollInClassPage.xaml.cs">
+      <DependentUpon>StudentEnrollInClassPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StudentPage.xaml.cs">
       <DependentUpon>StudentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProfessorChangeStudentGradeEnrollmentPage.xaml.cs">
+      <DependentUpon>ProfessorChangeStudentGradeEnrollmentPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +147,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="AdminAddRemoveCoursePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminAddRemoveCoursesProfessorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AdminAddRemoveUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="AdminPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,7 +171,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="StudentEnrollInClassPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StudentPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ProfessorChangeStudentGradeEnrollmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,7 +201,7 @@
       <Version>2.5.1</Version>
     </PackageReference>
     <PackageReference Include="SQLitePCLRaw.bundle_winsqlite3">
-      <Version>1.1.11</Version>
+      <Version>1.1.10</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
