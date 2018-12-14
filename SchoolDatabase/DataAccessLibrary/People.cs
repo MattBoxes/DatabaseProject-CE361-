@@ -26,7 +26,7 @@ namespace DataAccessLibrary
 
         public override string ToString()
         {
-            
+            throw new NotImplementedException();
         }
         
     }

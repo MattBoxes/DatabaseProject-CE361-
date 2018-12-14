@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="SchoolDatabase.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SchoolDatabase"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Grid>
+
+        <Grid.FocusVisualPrimaryBrush>
+            <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
+        </Grid.FocusVisualPrimaryBrush>
+
+        <Button x:Name="loginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,726,0,0" VerticalAlignment="Top" Width="587" FontSize="32"/>
+        <CheckBox x:Name="remMeChkBox" Content="Remember Me?" HorizontalAlignment="Left" Height="63" Margin="457,658,0,0" VerticalAlignment="Top" Width="437" FontSize="36" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto" Padding="10,0,0,20">
+            <CheckBox.RenderTransform>
+                <CompositeTransform Rotation="0"/>
+            </CheckBox.RenderTransform>
+        </CheckBox>
+        <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="267" Margin="0,104,0,0" VerticalAlignment="Top" Width="338" Source="Assets/SDSULOGO.png"/>
+        <ListView HorizontalAlignment="Center" Height="176" VerticalAlignment="Top" Width="987" Margin="0,482,0,0">
+            <TextBox x:Name="userField" Text="" Height="70" Width="933" RequestedTheme="Light" TextChanged="userField_TextChanged" Margin="12,0,12,0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Username"/>
+            <TextBox x:Name="userField_Copy" Text="" Height="70" Width="933" RequestedTheme="Default" TextChanged="userField_TextChanged" FontFamily="Arial" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" Margin="12,10,12,30" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PlaceholderText="Password" Visibility="Visible"/>
+        </ListView>
+        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="111" Margin="216,309,0,0" VerticalAlignment="Top" Width="84"/>
+        <Button Content="Button" HorizontalAlignment="Left" Height="123" Margin="159,102,0,0" VerticalAlignment="Top" Width="387" RenderTransformOrigin="0.492,0.488"/>
+
+    </Grid>
+</Page>

@@ -4,20 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Data.Sqlite;
+using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
-    public class Admin : People,IComparable
+    public class Admin : People,IComparable<Admin>
+    
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
+
         /// <summary>
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
-
-
+      
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -51,27 +53,34 @@ namespace DataAccessLibrary
         {
 
         }
+
         public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
+
         public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
             throw new NotImplementedException();
         }
+
         public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
+
         public Admin AddProfToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
+      
         public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
+
         public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
+
         {
             throw new NotImplementedException();
         }
@@ -126,6 +135,7 @@ namespace DataAccessLibrary
         }
 
 
+
         public Admin ViewListOfUsers()
         {
             throw new NotImplementedException();
@@ -134,14 +144,41 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
 
+       
+
+        public override bool Equals(object obj)
+        {
+            throw new NotImplementedException();
         }
+
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public Admin PromoteUser(string firstname, string lastname)
         {
             throw new NotImplementedException();
+}
 
+        public override string ToString()
+        {
+            throw new NotImplementedException();   
         }
 
-        public int CompareTo(object obj)
+
+        private async void DisplayInvalidEntry()
+        {
+            ContentDialog InvalidEntry = new ContentDialog
+            {
+                Title = "Enter a current Admin's information",
+                CloseButtonText = "OK"
+            };
+            ContentDialogResult result = await InvalidEntry.ShowAsync();
+        }
+
+        public int CompareTo(Admin obj)
         {
             try
             {
@@ -151,15 +188,25 @@ namespace DataAccessLibrary
                 }
                 else
                 {
-                    throw new NotImplementedException();
+                    if (LastName.CompareTo(obj.LastName) == 0)
+                    {
+                        if(FirstName.CompareTo(obj.FirstName) == 0)
+                        {
+                            return Id - obj.Id;
+                        }
+                        return FirstName.CompareTo(obj.FirstName);
+                    }
+                    return LastName.CompareTo(obj.LastName);
 
                 }
+
             }
             catch (NullReferenceException nEx)
             {
-                throw new NotImplementedException();
+                DisplayInvalidEntry();
+                return -1;
+            }           
 
-            }
         }
 
     }
