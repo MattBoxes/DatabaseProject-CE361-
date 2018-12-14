@@ -12,6 +12,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using SQLite.Net.Attributes;
+using DataAccessLibrary;
+
+
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +26,10 @@ namespace SchoolDatabase
     /// </summary>
     public sealed partial class AdminPage : Page
     {
+        string path;
+        SQLite.Net.SQLiteConnection conn;
+        Admin adminInUse = new Admin("Xavier", "Truong", "90000", "abc123");
+
         public AdminPage()
         {
             this.InitializeComponent();
@@ -30,6 +38,22 @@ namespace SchoolDatabase
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
+        }
+
+
+        private void AddCourse_Click(object sender, RoutedEventArgs e)
+        {
+            adminInUse.AddCourse(Course_ID.Text, Course_Name.Text);
+        }
+
+        private void ShowCoursesButton_Click(object sender, RoutedEventArgs e)
+        {
+            adminInUse.viewListOfCourses();
+        }
+
+        private void btnLogin(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
