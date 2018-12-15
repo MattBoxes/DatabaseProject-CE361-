@@ -54,33 +54,32 @@ namespace DataAccessLibrary
 
         }
 
-        public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
+        public void EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
 
-        public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
+        public void EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
             throw new NotImplementedException();
         }
 
-        public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
+        public void AddStudentToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public Admin AddProfToCourse(string firstname, string lastname, string coursename)
+        public void AddProfToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
       
-        public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
+        public void RemoveStudentFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
-
+        public void RemoveProfFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
@@ -130,21 +129,18 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
             return CourseIDs;
         }
 
-
-
-        public Admin ViewListOfUsers()
+        public void ViewListOfUsers()
         {
             throw new NotImplementedException();
         }
-        public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
+
+        public void EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
-
-       
+        }       
 
         public override bool Equals(object obj)
         {
@@ -157,16 +153,15 @@ namespace DataAccessLibrary
             return base.GetHashCode();
         }
 
-        public Admin PromoteUser(string firstname, string lastname)
+        public void PromoteUser(string firstname, string lastname)
         {
             throw new NotImplementedException();
-}
+        }
 
         public override string ToString()
         {
             throw new NotImplementedException();   
         }
-
 
         private async void DisplayInvalidEntry()
         {
@@ -197,17 +192,13 @@ namespace DataAccessLibrary
                         return FirstName.CompareTo(obj.FirstName);
                     }
                     return LastName.CompareTo(obj.LastName);
-
                 }
-
             }
             catch (NullReferenceException nEx)
             {
                 DisplayInvalidEntry();
                 return -1;
             }           
-
         }
-
     }
 }
