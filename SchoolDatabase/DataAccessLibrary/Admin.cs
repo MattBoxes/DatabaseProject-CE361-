@@ -8,8 +8,8 @@ using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
-    public class Admin : People,IComparable<Admin>
-    
+    public class Admin : People, IComparable<Admin>
+
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
@@ -18,8 +18,8 @@ namespace DataAccessLibrary
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
-            : base(firstname, lastname, id, pw)  {}
-      
+            : base(firstname, lastname, id, pw) { }
+
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -73,7 +73,7 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
         }
-      
+
         public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
@@ -140,17 +140,16 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
         }
+
         public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
-
-       
+        }
 
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
-
 
         public override int GetHashCode()
         {
@@ -160,13 +159,12 @@ namespace DataAccessLibrary
         public Admin PromoteUser(string firstname, string lastname)
         {
             throw new NotImplementedException();
-}
+        }
 
         public override string ToString()
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
-
 
         private async void DisplayInvalidEntry()
         {
@@ -190,7 +188,7 @@ namespace DataAccessLibrary
                 {
                     if (LastName.CompareTo(obj.LastName) == 0)
                     {
-                        if(FirstName.CompareTo(obj.FirstName) == 0)
+                        if (FirstName.CompareTo(obj.FirstName) == 0)
                         {
                             return Id - obj.Id;
                         }
@@ -205,9 +203,8 @@ namespace DataAccessLibrary
             {
                 DisplayInvalidEntry();
                 return -1;
-            }           
+            }
 
         }
-
     }
 }
