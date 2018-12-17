@@ -29,7 +29,7 @@
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
 
         <Button x:Name="DisplayUsersButton" Content="Display Users" HorizontalAlignment="Left" Margin="510,245,0,0" VerticalAlignment="Top" Width="172" FontSize="20" FontWeight="Normal" Height="44"/>
-        <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="817,245,0,0" VerticalAlignment="Top" Width="531" FontSize="20" FontWeight="Normal" Height="44"/>
+        <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="817,245,0,0" VerticalAlignment="Top" Width="531" FontSize="20" FontWeight="Normal" Height="44" Click="DisplayCoursesButton_Click"/>
         <ListView x:Name="ShowUsersListView" HorizontalAlignment="Left" Height="579" Margin="150,332,0,0" VerticalAlignment="Top" Width="531"/>
         <ListView x:Name="ShowCoursesListView" Height="579" Margin="817,332,150,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="531"/>
 

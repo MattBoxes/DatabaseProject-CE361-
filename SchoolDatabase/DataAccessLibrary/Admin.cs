@@ -136,10 +136,7 @@ namespace DataAccessLibrary
 
 
 
-        public Admin ViewListOfUsers()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
         {

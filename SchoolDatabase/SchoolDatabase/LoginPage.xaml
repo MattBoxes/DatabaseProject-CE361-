@@ -17,8 +17,8 @@
 
         <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Left" Height="62" Margin="455,739,0,0" VerticalAlignment="Top" Width="587" FontSize="36" Click="LoginButton_Click" FontWeight="Normal"/>
         <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="267" Margin="0,104,0,0" VerticalAlignment="Top" Width="338" Source="Assets/SDSULOGO.png"/>
-        <TextBox x:Name="LastNameTextBox" Text="" RequestedTheme="Light" Margin="277,531,278,416" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Last Name" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-        <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="278,609,277,338"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="User ID" Visibility="Visible" Height="53" Width="945"/>
+        <TextBox x:Name="LastNameTextBox" Text="" RequestedTheme="Light" Margin="0,531,0,416" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Last Name" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="0,609,0,338"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="User ID" Visibility="Visible" Height="53" Width="945"/>
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
         <ComboBox x:Name="SelectPositionComboBox" HorizontalAlignment="Center" Margin="0,425,0,0" VerticalAlignment="Top" Height="44" Width="187" PlaceholderText="Select Position..." FontSize="20">
             <ComboBoxItem Content="Admin"/>
