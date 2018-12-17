@@ -36,17 +36,20 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
+
         public void RemoveCourse(string courseName)
         {
 
         }
+
         public void EditCourseName(string courseName, string newCourseName)
         {
-            if ((courseName != null) && (newCourseName != null)
+            if ((courseName != null) && (newCourseName != null))
             {
-
+                throw new NotImplementedException();
             }
         }
+
         public void AddUser(string firstname, string lastname, string id, string pw)
         {
 
@@ -184,10 +187,13 @@ namespace DataAccessLibrary
 
         public override string ToString()
         {
-            throw new NotImplementedException();   
+            if ((this.FirstName != null) && (this.LastName != null) && (this.Password != null))
+                return $"{this.FirstName} {this.LastName}\nID: {Id}\nPassword {Password}";
+            else
+                return $"Null character entered";
         }
 
-        public async void DisplayInvalidEntry()
+        private async void DisplayInvalidAdminEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
@@ -199,33 +205,23 @@ namespace DataAccessLibrary
 
         public int CompareTo(Admin obj)
         {
-            if (obj != null)
+            if (obj == null)
             {
-                if (obj == null)
-                {
-                    throw new NullReferenceException("Attempting to Compare NULL reference");
-                }
-                else
-                {
-                    if (LastName.CompareTo(obj.LastName) == 0)
-                    {
-                        if (FirstName.CompareTo(obj.FirstName) == 0)
-                        {
-                            return Id - obj.Id;
-                        }
-                        return FirstName.CompareTo(obj.FirstName);
-                    }
-                    return LastName.CompareTo(obj.LastName);
-
-                }
-
-            }
-            catch (NullReferenceException nEx)
-            {
-                DisplayInvalidEntry();
+                DisplayInvalidAdminEntry();
                 return -1;
             }
-
+            else
+            {
+                if (LastName.CompareTo(obj.LastName) == 0)
+                {
+                    if (FirstName.CompareTo(obj.FirstName) == 0)
+                    {
+                        return Id - obj.Id;
+                    }
+                    return FirstName.CompareTo(obj.FirstName);
+                }
+                return LastName.CompareTo(obj.LastName);
+            }
         }
     }
 }

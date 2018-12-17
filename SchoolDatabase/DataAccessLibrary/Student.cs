@@ -7,7 +7,7 @@ using Windows.UI.Xaml.Controls; // For warning messages (ContentDialog)
 
 namespace DataAccessLibrary
 {
-    public class Student : People, IComparable <Student> // Implement Icomparable with class People
+    public class Student : People, IComparable<Student> // Implement Icomparable with class People
     {
         // List users for students
         List<People> ListOfUsers;
@@ -33,7 +33,7 @@ namespace DataAccessLibrary
         /// <summary>
         /// Shows a warning message prompt to user 
         /// </summary>
-        public async void DisplayInvalidEntry()
+        public async void DisplayInvalidStudentEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
@@ -41,6 +41,18 @@ namespace DataAccessLibrary
                 CloseButtonText = "OK" // OK button
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync(); // Give result from Invalid Entry
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Student && obj != null)
+            {
+                Student that = (Student)obj;
+                return FirstName.Equals(that.FirstName) &&
+                    LastName.Equals(that.LastName) &&
+                    Id.Equals(that.Id);
+            }
+            return false;
         }
 
         /// <summary>
@@ -52,29 +64,22 @@ namespace DataAccessLibrary
         /// <returns></returns>
         public int CompareTo(Student obj)
         {
-            try 
+            if (obj == null)
             {
-                if (obj == null) // obj == 0
-                {
-                    throw new NullReferenceException("Attemping to Compare NULL reference");
-                }
-                else
-                {
-                    if (LastName.CompareTo(obj.LastName) == 0) // Same last name
-                    {
-                        if (FirstName.CompareTo(obj.FirstName) == 0) // Same first name
-                        {
-                            return Id - obj.Id; // Tie breaker: Difference of Id 
-                        }
-                        return FirstName.CompareTo(obj.FirstName); // Compare first names
-                    }
-                    return LastName.CompareTo(obj.LastName); // Compare last names
-                }
-            }
-            catch (NullReferenceException nEx)
-            {
-                DisplayInvalidEntry(); // Call warning message object
+                DisplayInvalidStudentEntry();
                 return -1;
+            }
+            else
+            {
+                if (LastName.CompareTo(obj.LastName) == 0)
+                {
+                    if (FirstName.CompareTo(obj.FirstName) == 0)
+                    {
+                        return Id - obj.Id;
+                    }
+                    return FirstName.CompareTo(obj.FirstName);
+                }
+                return LastName.CompareTo(obj.LastName);
             }
         }
 
@@ -93,8 +98,11 @@ namespace DataAccessLibrary
         /// </summary>
         /// <returns></returns>
         public override string ToString()
-        {
-            return $"{FirstName} {LastName}\n Red ID: {Id}\n Major: {Student_Major}";
+        {       
+            if ((this.FirstName != null) && (this.LastName != null))   
+                return $"{FirstName} {LastName}\n ID: {Id}\n Major: {Student_Major}";
+            else
+                return $"Null character entered";
         }
 
     }
