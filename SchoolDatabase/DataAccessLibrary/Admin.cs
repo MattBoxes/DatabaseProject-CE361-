@@ -18,6 +18,7 @@ namespace DataAccessLibrary
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
 
+
         /// <summary>
         /// Constructor for Admin Class. Creates the Admin's First Name,
         /// Last Name, Password, and ID.
@@ -193,6 +194,7 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
         }
+        
         /// <summary>
         /// Returns the string of the Admin's First Name, Last Name,
         /// and ID
@@ -205,6 +207,7 @@ namespace DataAccessLibrary
             else
                 return $"Null character entered";
         }
+        
         /// <summary>
         /// Method to display a popup window when entering invalid Admin information
         /// </summary>
@@ -217,6 +220,8 @@ namespace DataAccessLibrary
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync();
         }
+        
+        
         /// <summary>
         /// CompareTo Implementation of IComparable Interface that compares Admins by First Name, then 
         /// Last Name, then unique ID.

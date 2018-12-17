@@ -8,25 +8,28 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
+    <Grid>
 
-    <Grid HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
-
-        <Grid.FocusVisualPrimaryBrush>
-            <ImageBrush ImageSource="/Assets/CAMPUS.png"/>
-        </Grid.FocusVisualPrimaryBrush>
-
-
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,739,0,0" VerticalAlignment="Top" Width="587" FontSize="36" Click="LoginButton_ClickAsync" FontWeight="Normal"/>
         <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="318" Margin="0,87,0,0" VerticalAlignment="Top" Width="443" Source="Assets/COMPE 361 Logo.png"/>
-        <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="0,611,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Password" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="0,529,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="User ID" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
-        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
         <ComboBox x:Name="SelectPositionComboBox" HorizontalAlignment="Center" Margin="0,425,0,0" VerticalAlignment="Top" Height="44" Width="187" PlaceholderText="Select Position..." FontSize="20">
+
             <ComboBoxItem Content="Admin"/>
             <ComboBoxItem Content="Professor"/>
             <ComboBoxItem Content="Student"/>
+
         </ComboBox>
+
+        <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="0,529,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="User ID" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="0,614,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Password" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,739,0,0" VerticalAlignment="Top" Width="587" FontSize="36" Click="LoginButton_ClickAsync" FontWeight="Normal"/>
+
+        
+        
+        <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
+
         <!--<Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
             <StackPanel>
                 <TextBox Name="Input_Box"></TextBox>
