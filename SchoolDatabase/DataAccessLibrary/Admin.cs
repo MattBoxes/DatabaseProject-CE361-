@@ -86,7 +86,7 @@ namespace DataAccessLibrary
         }
 
 
-        public List<string> GetListOfCourseNames()
+        private List<string> GetListOfCourseNames()
         {
             List<string> CourseNames = new List<string>();
 
@@ -94,8 +94,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT Course_Name from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name from Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -110,7 +109,7 @@ namespace DataAccessLibrary
             return CourseNames;
         }
 
-        public List<string> GetListOfCourseIDs()
+        private List<string> GetListOfCourseIDs()
         {
             List<string> CourseIDs = new List<string>();
 
@@ -118,8 +117,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT Course_ID from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID from Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -134,7 +132,29 @@ namespace DataAccessLibrary
             return CourseIDs;
         }
 
+        public List<string> ViewListOfCourses()
+        {
+            List<Course> courseList = new List<Course>();
 
+            List<string> courseIDs = GetListOfCourseIDs();
+            List<string> courseNames = GetListOfCourseNames();
+            int i = 0;
+            foreach (string s in courseIDs)
+            {
+                courseList[i] = new Course(courseNames[i], courseIDs[i]);
+                i++;
+            }
+
+            i = 0;
+            List<string> ctlList = new List<string>();
+            foreach (Course course in courseList)
+            {
+                ctlList[i] = courseList[i].ToString();
+                i++;
+            }
+
+            return ctlList;
+        }
 
         
 
