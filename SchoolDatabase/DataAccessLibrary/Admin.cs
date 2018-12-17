@@ -8,13 +8,20 @@ using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
+    /// <summary>
+    /// The Admin class contains the definition and methods used by the database
+    /// to define the Admin user, who has full control of the database and all its
+    /// information.
+    /// </summary>
     public class Admin : People, IComparable <Admin>
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
 
+
         /// <summary>
-        /// COnstructor that call People class' constructor
+        /// Constructor for Admin Class. Creates the Admin's First Name,
+        /// Last Name, Password, and ID.
         /// </summary>
         /// <param name="firstname"></param>
         /// <param name="lastname"></param>
@@ -229,7 +236,7 @@ namespace DataAccessLibrary
             return ctlList;
         }
 
-        public Admin ViewListOfUsers()
+        public void ViewListOfUsers()
         {
             throw new NotImplementedException();
         }
@@ -244,7 +251,6 @@ namespace DataAccessLibrary
             throw new NotImplementedException();
         }
 
-
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -254,7 +260,12 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
         }
-
+        
+        /// <summary>
+        /// Returns the string of the Admin's First Name, Last Name,
+        /// and ID
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if ((this.FirstName != null) && (this.LastName != null) && (this.Password != null))
@@ -262,7 +273,10 @@ namespace DataAccessLibrary
             else
                 return $"Null character entered";
         }
-
+        
+        /// <summary>
+        /// Method to display a popup window when entering invalid Admin information
+        /// </summary>
         private async void DisplayInvalidAdminEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
@@ -272,7 +286,14 @@ namespace DataAccessLibrary
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync();
         }
-
+        
+        
+        /// <summary>
+        /// CompareTo Implementation of IComparable Interface that compares Admins by First Name, then 
+        /// Last Name, then unique ID.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public int CompareTo(Admin obj)
         {
             if (obj == null)
