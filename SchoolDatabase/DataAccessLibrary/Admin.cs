@@ -9,7 +9,6 @@ using Windows.UI.Xaml.Controls;
 namespace DataAccessLibrary
 {
     public class Admin : People, IComparable <Admin>
-
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
@@ -18,8 +17,8 @@ namespace DataAccessLibrary
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
-            : base(firstname, lastname, id, pw) { }
-
+            : base(firstname, lastname, id, pw)  {}
+      
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -43,7 +42,10 @@ namespace DataAccessLibrary
         }
         public void EditCourseName(string courseName, string newCourseName)
         {
+            if ((courseName != null) && (newCourseName != null)
+            {
 
+            }
         }
         public void AddUser(string firstname, string lastname, string id, string pw)
         {
@@ -54,39 +56,38 @@ namespace DataAccessLibrary
 
         }
 
-        public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
+        public void EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
 
-        public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
+        public void EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
             throw new NotImplementedException();
         }
 
-        public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
+        public void AddStudentToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public Admin AddProfToCourse(string firstname, string lastname, string coursename)
+        public void AddProfToCourse(string firstname, string lastname, string coursename)
+        {
+            throw new NotImplementedException();
+        }
+      
+        public void RemoveStudentFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
-
+        public void RemoveProfFromCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
 
-        public List<string> GetListOfCourseNames()
+        private List<string> GetListOfCourseNames()
         {
             List<string> CourseNames = new List<string>();
 
@@ -94,8 +95,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT Course_Name from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name from Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -110,7 +110,7 @@ namespace DataAccessLibrary
             return CourseNames;
         }
 
-        public List<string> GetListOfCourseIDs()
+        private List<string> GetListOfCourseIDs()
         {
             List<string> CourseIDs = new List<string>();
 
@@ -118,8 +118,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand
-                    ("SELECT Course_ID from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID from Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -130,37 +129,62 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
-
             return CourseIDs;
         }
 
+        public List<string> ViewListOfCourses()
+        {
+            List<Course> courseList = new List<Course>();
 
+            List<string> courseIDs = GetListOfCourseIDs();
+            List<string> courseNames = GetListOfCourseNames();
+            int i = 0;
+            foreach (string s in courseIDs)
+            {
+                courseList[i] = new Course(courseNames[i], courseIDs[i]);
+                i++;
+            }
 
-        
+            i = 0;
+            List<string> ctlList = new List<string>();
+            foreach (Course course in courseList)
+            {
+                ctlList[i] = courseList[i].ToString();
+                i++;
+            }
 
-        public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
+            return ctlList;
+        }
+
+        public Admin ViewListOfUsers()
         {
             throw new NotImplementedException();
         }
+
+        public void EditStudentMajor(string firstname, string lastname, string newMajor)
+        {
+            throw new NotImplementedException();
+        }       
 
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
 
+
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
-        public Admin PromoteUser(string firstname, string lastname)
+        public void PromoteUser(string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();
+            throw new NotImplementedException();   
         }
 
         public async void DisplayInvalidEntry()
@@ -177,21 +201,31 @@ namespace DataAccessLibrary
         {
             if (obj != null)
             {
-                if (LastName.CompareTo(obj.LastName) == 0)
+                if (obj == null)
                 {
-                    if (FirstName.CompareTo(obj.FirstName) == 0)
-                    {
-                        return Id - obj.Id;
-                    }
-                    return FirstName.CompareTo(obj.FirstName);
+                    throw new NullReferenceException("Attempting to Compare NULL reference");
                 }
-                return LastName.CompareTo(obj.LastName);
+                else
+                {
+                    if (LastName.CompareTo(obj.LastName) == 0)
+                    {
+                        if (FirstName.CompareTo(obj.FirstName) == 0)
+                        {
+                            return Id - obj.Id;
+                        }
+                        return FirstName.CompareTo(obj.FirstName);
+                    }
+                    return LastName.CompareTo(obj.LastName);
+
+                }
+
             }
-            else
+            catch (NullReferenceException nEx)
             {
                 DisplayInvalidEntry();
                 return -1;
             }
+
         }
     }
 }
