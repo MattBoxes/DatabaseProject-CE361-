@@ -13,9 +13,6 @@ namespace DataAccessLibrary
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
 
-        /// <summary>
-        /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
-        /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
       
