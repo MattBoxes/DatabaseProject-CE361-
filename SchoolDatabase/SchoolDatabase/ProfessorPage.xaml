@@ -13,8 +13,9 @@
         <Button x:Name="ChangeStudentsGradeEnrollmentButton" Content="Change Student's Grade/Enrollment" HorizontalAlignment="Left" Margin="160,171,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="337" Click="ChangeStudentsGradeEnrollmentButton_Click"/>
         <Button x:Name="DisplayYourCoursesButton_Copy" Content="Display Your Courses" HorizontalAlignment="Left" Margin="160,270,0,0" VerticalAlignment="Top" Height="45" Width="211" FontWeight="Normal" FontSize="20"/>
         <ListView x:Name="DisplayYourCoursesListView" Height="523" Margin="155,350,0,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Left"/>
-        <ListView x:Name="StudentsEnrolledInCourseListView" Height="522" Margin="0,351,155,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Right"/>
+        <ListView x:Name="StudentsEnrolledInCourseListView" Height="522" Margin="795,351,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
         <TextBlock x:Name="StudentsEnrolledInCourseTextBlock" HorizontalAlignment="Left" Margin="794,291,0,0" Text="Students Enrolled in Course" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20" Height="25" Width="265"/>
+        <Button x:Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="556,171,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="178" Click="ChangePasswordButton_Click"/>
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
 
     </Grid>

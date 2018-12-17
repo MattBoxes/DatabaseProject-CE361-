@@ -78,7 +78,7 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Admin (Admin_ID, Password, First_Name, Last_Name) " +
+                insertCommand.CommandText = "INSERT OR IGNORE INTO Admin (Admin_ID, Password, First_Name, Last_Name) " +
                                                         "VALUES (90000, 'j123', 'Justen', 'Hitchcock'), " +
                                                                 "(90001, 'c123', 'Carlos', 'Fletes'), " +
                                                                 "(90002, 'm123', 'Matthew', 'Punsalan'), " +

@@ -14,7 +14,7 @@
 
         <!--<Grid Margin="385,121,213,0" VerticalAlignment="Top" Height="150" HorizontalAlignment="Stretch">-->
         <!--</Grid>-->
-        <Button x:Name="AddRemoveUserButton" Content="Add/Remove User" HorizontalAlignment="Stretch" Margin="410,124,902,0" VerticalAlignment="Top" Height="44" FontWeight="Normal" FontSize="20" Click="AddRemoveUserButton_Click"/>
+        <Button x:Name="AddRemoveUserButton" Content="Add/Remove User" HorizontalAlignment="Left" Margin="410,124,0,0" VerticalAlignment="Top" Height="44" FontWeight="Normal" FontSize="20" Click="AddRemoveUserButton_Click" Width="188"/>
         <Button x:Name="AddRemoveCoursesProfessorButton" Content="Add/Remove Course's Professor" HorizontalAlignment="Left" Margin="658,124,0,0" VerticalAlignment="Top" Height="44" Width="309" FontWeight="Normal" FontSize="20" Click="AddRemoveCoursesProfessorButton_Click" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
             <Button.RenderTransform>
                 <CompositeTransform Rotation="-0.009"/>
@@ -22,7 +22,7 @@
         </Button>
 
         <Button x:Name="AddRemoveCourseButton" Content="Add/Remove Course" HorizontalAlignment="Left" Margin="150,124,0,0" VerticalAlignment="Top" Height="44" Width="203" FontWeight="Normal" FontSize="20" Click="AddCourseButton_Click"/>
-        <ComboBox x:Name="SelectUserTypeToDisplayComboBox" HorizontalAlignment="Left" Margin="150,245,0,0" VerticalAlignment="Top" PlaceholderText="Select Type of User to Display..." Height="44" Width="322" FontWeight="Normal" FontSize="20">
+        <ComboBox x:Name="SelectUserTypeToDisplayComboBox" HorizontalAlignment="Left" Margin="150,245,0,0" VerticalAlignment="Top" PlaceholderText="Select Type of User to Display..." Height="44" FontWeight="Normal" FontSize="20">
             <ComboBoxItem Content="Professor"/>
             <ComboBoxItem Content="Student"/>
         </ComboBox>
@@ -31,7 +31,7 @@
         <Button x:Name="DisplayUsersButton" Content="Display Users" HorizontalAlignment="Left" Margin="510,245,0,0" VerticalAlignment="Top" Width="172" FontSize="20" FontWeight="Normal" Height="44"/>
         <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="817,245,0,0" VerticalAlignment="Top" Width="531" FontSize="20" FontWeight="Normal" Height="44"/>
         <ListView x:Name="ShowUsersListView" HorizontalAlignment="Left" Height="579" Margin="150,332,0,0" VerticalAlignment="Top" Width="531"/>
-        <ListView x:Name="ShowCoursesListView" Height="579" Margin="817,332,150,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="531"/>
+        <ListView x:Name="ShowCoursesListView" Height="579" Margin="817,332,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="531"/>
 
     </Grid>
 

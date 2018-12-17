@@ -178,33 +178,23 @@ namespace DataAccessLibrary
 
         public int CompareTo(Admin obj)
         {
-            try
+            if (obj != null)
             {
-                if (obj == null)
+                if (LastName.CompareTo(obj.LastName) == 0)
                 {
-                    throw new NullReferenceException("Attempting to Compare NULL reference");
-                }
-                else
-                {
-                    if (LastName.CompareTo(obj.LastName) == 0)
+                    if (FirstName.CompareTo(obj.FirstName) == 0)
                     {
-                        if (FirstName.CompareTo(obj.FirstName) == 0)
-                        {
-                            return Id - obj.Id;
-                        }
-                        return FirstName.CompareTo(obj.FirstName);
+                        return Id - obj.Id;
                     }
-                    return LastName.CompareTo(obj.LastName);
-
+                    return FirstName.CompareTo(obj.FirstName);
                 }
-
+                return LastName.CompareTo(obj.LastName);
             }
-            catch (NullReferenceException nEx)
+            else
             {
                 DisplayInvalidEntry();
                 return -1;
             }
-
         }
     }
 }

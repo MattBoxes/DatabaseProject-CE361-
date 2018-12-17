@@ -29,7 +29,7 @@
         <Button x:Name="DropStudentFromCourseButton" Content="Drop Student from Course" HorizontalAlignment="Left" Margin="1092,757,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="253"/>
         <Button x:Name="DisplayYourCoursesButton" Content="Display Your Courses" HorizontalAlignment="Left" Margin="155,171,0,0" VerticalAlignment="Top" Height="45" Width="211" FontWeight="Normal" FontSize="20"/>
         <ListView x:Name="DisplayYourCoursesListView" Height="620" Margin="155,253,0,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Left"/>
-        <ListView x:Name="StudentsEnrolledInCourseListView" Height="384" Margin="816,253,155,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Right"/>
+        <ListView x:Name="StudentsEnrolledInCourseListView" Height="384" Margin="795,253,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
         <TextBlock x:Name="StudentsEnrolledInCourseTextBlock" HorizontalAlignment="Left" Margin="794,192,0,0" Text="Students Enrolled in Course" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="20" Height="25" Width="265"/>
 
     </Grid>
