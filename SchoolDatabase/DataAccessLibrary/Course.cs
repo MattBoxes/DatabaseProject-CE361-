@@ -18,6 +18,7 @@ namespace DataAccessLibrary
         public string Id { get; set; }
 
         public int ProfessorId { get; set; }
+
         /// <summary>
         /// Constructor for Course Class. Creates the Course Name and ID.
         /// </summary>

@@ -46,6 +46,7 @@ namespace DataAccessLibrary
         {
 
         }
+
         /// <summary>
         /// Method to display a popup window when entering invalid Professor information
         /// </summary>
@@ -58,6 +59,7 @@ namespace DataAccessLibrary
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync(); // Give result from Invalid Entry
         }
+
         /// <summary>
         /// CompareTo Implementation of IComparable Interface that compares Professors by Last Name, then
         /// First Name, then unique ID.
@@ -84,6 +86,7 @@ namespace DataAccessLibrary
                 return LastName.CompareTo(obj.LastName);
             }
         }
+
         /// <summary>
         /// Returns the string of the Professor's First Name, Last Name,
         /// Degree, and ID.

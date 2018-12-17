@@ -169,7 +169,7 @@ namespace DataAccessLibrary
             return ctlList;
         }
 
-        public Admin ViewListOfUsers()
+        public void ViewListOfUsers()
         {
             throw new NotImplementedException();
         }

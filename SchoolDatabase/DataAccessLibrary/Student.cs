@@ -50,7 +50,6 @@ namespace DataAccessLibrary
 
         /// <summary>
         /// Object requirement #1 - CompareTo()
-        /// Implement try and catch blocks
         /// Compare: last names -> first names -> Id
         /// </summary>
         /// <param name="obj"></param>
