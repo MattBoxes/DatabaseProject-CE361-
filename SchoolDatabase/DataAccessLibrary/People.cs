@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
@@ -24,9 +25,17 @@ namespace DataAccessLibrary
             this.Password = pw;
         }
 
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
         public override string ToString()
         {
-            throw new NotImplementedException();
+            if ((this.FirstName != null) && (this.LastName != null))
+                return $"{this.FirstName} {this.LastName}\nID: {Id}\n";
+            else
+                return $"Null character entered";
         }
         
     }

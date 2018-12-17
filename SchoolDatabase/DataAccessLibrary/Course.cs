@@ -22,5 +22,10 @@ namespace DataAccessLibrary
             this.Id = inID;
         }
 
+        public override string ToString()
+        {
+            return base.ToString();
+        }
+
     }
 }
