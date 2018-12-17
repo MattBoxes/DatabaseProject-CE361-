@@ -16,7 +16,7 @@
         </Grid.FocusVisualPrimaryBrush>
 
 
-        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,739,0,0" VerticalAlignment="Top" Width="587" FontSize="36" Click="LoginButton_Click" FontWeight="Normal"/>
+        <Button x:Name="LoginButton" Content="Login" HorizontalAlignment="Center" Height="62" Margin="0,739,0,0" VerticalAlignment="Top" Width="587" FontSize="36" Click="LoginButton_ClickAsync" FontWeight="Normal"/>
         <Image x:Name="School_Logo" HorizontalAlignment="Center" Height="318" Margin="0,87,0,0" VerticalAlignment="Top" Width="443" Source="Assets/COMPE 361 Logo.png"/>
         <TextBox x:Name="PasswordTextBox" Text="" RequestedTheme="Light" Margin="0,611,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="Password" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="0,529,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="4,4,4,4" PlaceholderText="User ID" Visibility="Visible" Height="53" Width="945" HorizontalAlignment="Center" VerticalAlignment="Top"/>

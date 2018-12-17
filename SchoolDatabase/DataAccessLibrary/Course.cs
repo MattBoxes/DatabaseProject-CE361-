@@ -12,8 +12,6 @@ namespace DataAccessLibrary
 
         public string Id { get; set; }
 
-        public int StudentId { get; set; }
-
         public int ProfessorId { get; set; }
 
         public Course(string inName, string inID)
@@ -26,6 +24,5 @@ namespace DataAccessLibrary
         {
             return base.ToString();
         }
-
     }
 }

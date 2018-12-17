@@ -32,7 +32,11 @@ namespace DataAccessLibrary
 
                 tableCommand = "CREATE TABLE IF NOT " +
                     "EXISTS Course (Course_ID TEXT PRIMARY KEY, " +
-                                "Course_Name TEXT NOT NULL)";
+                                "Course_Name TEXT NOT NULL, " +
+                                "Professor_ID INTEGER NOT NULL, " +
+                                "FOREIGN KEY (Professor_ID) REFERENCES Professor (Professor_ID)" +
+                                    "ON DELETE SET NULL ON UPDATE NO ACTION" +
+                                ")";
 
                 createTable.CommandText = tableCommand;
                 createTable.ExecuteReader();

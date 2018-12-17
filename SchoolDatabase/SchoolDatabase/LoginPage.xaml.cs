@@ -30,7 +30,7 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             if(SelectPositionComboBox.SelectedIndex == 0)
             {
@@ -51,6 +51,15 @@ namespace SchoolDatabase
                             {
                                 if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(AdminPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
                         }
                     }  
@@ -76,6 +85,15 @@ namespace SchoolDatabase
                             {
                                 if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(ProfessorPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
                         }
                     }
@@ -101,11 +119,20 @@ namespace SchoolDatabase
                             {
                                 if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(StudentPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
+
                         }
                     }
                 }
-                
             }
             else
             {
