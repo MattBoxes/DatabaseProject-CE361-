@@ -8,8 +8,8 @@ using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
-    public class Admin : People,IComparable<Admin>
-    
+    public class Admin : People, IComparable<Admin>
+
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
@@ -18,8 +18,8 @@ namespace DataAccessLibrary
         /// Admin Constructor. The default name of the admin is "Admin". The default Id is "0"
         /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
-            : base(firstname, lastname, id, pw)  {}
-      
+            : base(firstname, lastname, id, pw) { }
+
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -43,10 +43,7 @@ namespace DataAccessLibrary
         }
         public void EditCourseName(string courseName, string newCourseName)
         {
-            if ((courseName != null) && (newCourseName != null)
-            {
 
-            }
         }
         public void AddUser(string firstname, string lastname, string id, string pw)
         {
@@ -57,32 +54,33 @@ namespace DataAccessLibrary
 
         }
 
-        public void EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
+        public Admin EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
 
-        public void EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
+        public Admin EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
         {
             throw new NotImplementedException();
         }
 
-        public void AddStudentToCourse(string firstname, string lastname, string coursename)
+        public Admin AddStudentToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public void AddProfToCourse(string firstname, string lastname, string coursename)
-        {
-            throw new NotImplementedException();
-        }
-      
-        public void RemoveStudentFromCourse(string firstname, string lastname, string coursename)
+        public Admin AddProfToCourse(string firstname, string lastname, string coursename)
         {
             throw new NotImplementedException();
         }
 
-        public void RemoveProfFromCourse(string firstname, string lastname, string coursename)
+        public Admin RemoveStudentFromCourse(string firstname, string lastname, string coursename)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Admin RemoveProfFromCourse(string firstname, string lastname, string coursename)
+
         {
             throw new NotImplementedException();
         }
@@ -132,38 +130,37 @@ namespace DataAccessLibrary
 
                 db.Close();
             }
+
             return CourseIDs;
         }
 
-        public void ViewListOfUsers()
+
+
+        
+
+        public Admin EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
         }
-
-        public void EditStudentMajor(string firstname, string lastname, string newMajor)
-        {
-            throw new NotImplementedException();
-        }       
 
         public override bool Equals(object obj)
         {
             throw new NotImplementedException();
         }
 
-
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
-        public void PromoteUser(string firstname, string lastname)
+        public Admin PromoteUser(string firstname, string lastname)
         {
             throw new NotImplementedException();
         }
 
         public override string ToString()
         {
-            throw new NotImplementedException();   
+            throw new NotImplementedException();
         }
 
         private async void DisplayInvalidEntry()
@@ -178,30 +175,23 @@ namespace DataAccessLibrary
 
         public int CompareTo(Admin obj)
         {
-            try
+            if (obj != null)
             {
-                if (obj == null)
+                if (LastName.CompareTo(obj.LastName) == 0)
                 {
-                    throw new NullReferenceException("Attempting to Compare NULL reference");
-                }
-                else
-                {
-                    if (LastName.CompareTo(obj.LastName) == 0)
+                    if (FirstName.CompareTo(obj.FirstName) == 0)
                     {
-                        if(FirstName.CompareTo(obj.FirstName) == 0)
-                        {
-                            return Id - obj.Id;
-                        }
-                        return FirstName.CompareTo(obj.FirstName);
+                        return Id - obj.Id;
                     }
-                    return LastName.CompareTo(obj.LastName);
+                    return FirstName.CompareTo(obj.FirstName);
                 }
+                return LastName.CompareTo(obj.LastName);
             }
-            catch (NullReferenceException nEx)
+            else
             {
                 DisplayInvalidEntry();
                 return -1;
-            }           
+            }
         }
     }
 }

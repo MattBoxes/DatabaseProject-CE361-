@@ -28,7 +28,31 @@ namespace SchoolDatabase
     {
         string path;
         SQLite.Net.SQLiteConnection conn;
-        Admin adminInUse = new Admin("Xavier", "Truong", 90000, "abc123");
+        Admin adminInUse;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            string param_id = (string) e.Parameter;
+            List<string> admin_ids = DataAccess.GetData("Admin", "Admin_ID");
+            List<string> admin_passwords = DataAccess.GetData("Admin", "Password");
+            List<string> admin_lasts = DataAccess.GetData("Admin", "Last_Name");
+            List<string> admin_firsts = DataAccess.GetData("Admin", "First_Name");
+
+            int countid = 0;
+            foreach (string id in admin_ids)
+            {   
+                if (param_id == id)
+                {
+                    adminInUse = new Admin(admin_firsts[countid], admin_lasts[countid], Int32.Parse(id), admin_passwords[countid]);                   
+                    break;
+                }
+                countid++;
+            }
+        }
 
         public AdminPage()
         {
@@ -37,22 +61,24 @@ namespace SchoolDatabase
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(LoginPage));
+            this.Frame.Navigate(typeof(LoginPage), adminInUse.Id.ToString());
         }
 
         private void AddCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AdminAddRemoveCoursePage));
+            this.Frame.Navigate(typeof(AdminAddRemoveCoursePage), adminInUse.Id.ToString());
         }
 
         private void AddRemoveUserButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AdminAddRemoveUserPage));
+            this.Frame.Navigate(typeof(AdminAddRemoveUserPage), adminInUse.Id.ToString());
         }
 
         private void AddRemoveCoursesProfessorButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage));
+            this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage), adminInUse.Id.ToString());
         }
+
+        
     }
 }

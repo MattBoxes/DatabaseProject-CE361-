@@ -34,15 +34,78 @@ namespace SchoolDatabase
         {
             if(SelectPositionComboBox.SelectedIndex == 0)
             {
-                this.Frame.Navigate(typeof(AdminPage));
+                List<string> admin_ids = DataAccess.GetData("Admin", "Admin_ID");
+                List<string> admin_passwords = DataAccess.GetData("Admin", "Password");
+
+                int countid = 0, countpw = 0;
+                foreach (string id in admin_ids)
+                {
+                    countid++;
+                    if (LastNameTextBox.Text == id)
+                    {
+                        countpw = 0;
+                        foreach (string pw in admin_passwords)
+                        {
+                            countpw++;
+                            if (countpw == countid)
+                            {
+                                if (UserIDTextBox.Text == pw)
+                                    this.Frame.Navigate(typeof(AdminPage), id);
+                            }
+                        }
+                    }  
+                }
+                
             }
             else if(SelectPositionComboBox.SelectedIndex == 1)
             {
-                this.Frame.Navigate(typeof(ProfessorPage));
+                List<string> prof_ids = DataAccess.GetData("Professor", "Professor_ID");
+                List<string> prof_passwords = DataAccess.GetData("Professor", "Password");
+
+                int countid = 0, countpw = 0;
+                foreach (string id in prof_ids)
+                {
+                    countid++;
+                    if (LastNameTextBox.Text == id)
+                    {
+                        countpw = 0;
+                        foreach (string pw in prof_passwords)
+                        {
+                            countpw++;
+                            if (countpw == countid)
+                            {
+                                if (UserIDTextBox.Text == pw)
+                                    this.Frame.Navigate(typeof(ProfessorPage), id);
+                            }
+                        }
+                    }
+                }
+                
             }
             else if(SelectPositionComboBox.SelectedIndex == 2)
             {
-                this.Frame.Navigate(typeof(StudentPage));
+                List<string> student_ids = DataAccess.GetData("Student", "Student_ID");
+                List<string> student_passwords = DataAccess.GetData("Student", "Password");
+
+                int countid = 0, countpw = 0;
+                foreach (string id in student_ids)
+                {
+                    countid++;
+                    if (LastNameTextBox.Text == id)
+                    {
+                        countpw = 0;
+                        foreach (string pw in student_passwords)
+                        {
+                            countpw++;
+                            if (countpw == countid)
+                            {
+                                if (UserIDTextBox.Text == pw)
+                                    this.Frame.Navigate(typeof(StudentPage), id);
+                            }
+                        }
+                    }
+                }
+                
             }
             else
             {

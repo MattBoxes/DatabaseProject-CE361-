@@ -36,5 +36,10 @@ namespace SchoolDatabase
         {
             this.Frame.Navigate(typeof(StudentEnrollInClassPage));
         }
+
+        private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(StudentChangePasswordPage));
+        }
     }
 }

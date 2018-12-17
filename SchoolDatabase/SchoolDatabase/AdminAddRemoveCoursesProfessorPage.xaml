@@ -9,14 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="45" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
+        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="40" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
         <TextBlock x:Name="AssignRemoveCourseProfessorTextBlock" HorizontalAlignment="Left" Margin="154,24,0,0" Text="Assign/Remove Course's Professor" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="38" Height="44" Width="615"/>
         <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="155,171,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44"/>
-        <ListView x:Name="DisplayCourseListView" Height="384" Margin="155,253,832,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Left"/>
+        <ListView x:Name="DisplayCourseListView" Height="384" Margin="155,253,0,0" VerticalAlignment="Top" Width="550" HorizontalAlignment="Left"/>
         <Button x:Name="DisplayProfessorsButton" Content="Display Professors" HorizontalAlignment="Left" Margin="794,171,0,0" VerticalAlignment="Top" Width="188" FontSize="20" FontWeight="Normal" Height="44"/>
-        <ListView x:Name="DisplayProfessorsListView" Height="384" Margin="816,253,155,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="550"/>
+        <ListView x:Name="DisplayProfessorsListView" Height="384" Margin="795,253,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="550"/>
         <Button x:Name="RemoveProfessorFromSelectedCourseButton" Content="Remove Professor From Selected Course" HorizontalAlignment="Left" Margin="154,681,0,0" VerticalAlignment="Top" Width="382" FontSize="20" FontWeight="Normal" Height="44"/>
-        <Button x:Name="AssignSelectedProfessorToSelectedCourseButton" Content="Assign Selected Professor to Selected Course" HorizontalAlignment="Left" Margin="816,681,0,0" VerticalAlignment="Top" Width="424" FontSize="20" FontWeight="Normal" Height="44"/>
+        <Button x:Name="AssignSelectedProfessorToSelectedCourseButton" Content="Assign Selected Professor to Selected Course" HorizontalAlignment="Left" Margin="794,681,0,0" VerticalAlignment="Top" Width="424" FontSize="20" FontWeight="Normal" Height="44"/>
 
     </Grid>
 </Page>
