@@ -16,7 +16,7 @@
         <Button x:Name="AddCourseButton" Content="Add Course" HorizontalAlignment="Left" Margin="154,313,0,0" VerticalAlignment="Top" Height="44" Width="127" FontWeight="Normal" FontSize="20"/>
         <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="774,171,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44"/>
         <ListView x:Name="RemoveCourseListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="571"/>
-        <Button x:Name="RemoveCourseButton" Content="Remove Course" HorizontalAlignment="Left" Margin="774,659,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44"/>
+        <Button x:Name="RemoveCourseButton" Content="Remove Course" HorizontalAlignment="Left" Margin="774,659,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44" Click="RemoveCourseButton_Click"/>
 
     </Grid>
 </Page>

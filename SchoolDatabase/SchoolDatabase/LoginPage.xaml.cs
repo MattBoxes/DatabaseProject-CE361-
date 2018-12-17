@@ -30,7 +30,7 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
-        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        private async void LoginButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             if(SelectPositionComboBox.SelectedIndex == 0)
             {
@@ -41,7 +41,7 @@ namespace SchoolDatabase
                 foreach (string id in admin_ids)
                 {
                     countid++;
-                    if (LastNameTextBox.Text == id)
+                    if (UserIDTextBox.Text == id)
                     {
                         countpw = 0;
                         foreach (string pw in admin_passwords)
@@ -49,8 +49,17 @@ namespace SchoolDatabase
                             countpw++;
                             if (countpw == countid)
                             {
-                                if (UserIDTextBox.Text == pw)
+                                if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(AdminPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
                         }
                     }  
@@ -66,7 +75,7 @@ namespace SchoolDatabase
                 foreach (string id in prof_ids)
                 {
                     countid++;
-                    if (LastNameTextBox.Text == id)
+                    if (UserIDTextBox.Text == id)
                     {
                         countpw = 0;
                         foreach (string pw in prof_passwords)
@@ -74,8 +83,17 @@ namespace SchoolDatabase
                             countpw++;
                             if (countpw == countid)
                             {
-                                if (UserIDTextBox.Text == pw)
+                                if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(ProfessorPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
                         }
                     }
@@ -91,7 +109,7 @@ namespace SchoolDatabase
                 foreach (string id in student_ids)
                 {
                     countid++;
-                    if (LastNameTextBox.Text == id)
+                    if (UserIDTextBox.Text == id)
                     {
                         countpw = 0;
                         foreach (string pw in student_passwords)
@@ -99,13 +117,22 @@ namespace SchoolDatabase
                             countpw++;
                             if (countpw == countid)
                             {
-                                if (UserIDTextBox.Text == pw)
+                                if (PasswordTextBox.Text == pw)
                                     this.Frame.Navigate(typeof(StudentPage), id);
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Incorrect Password",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
                             }
+
                         }
                     }
                 }
-                
             }
             else
             {

@@ -61,7 +61,7 @@ namespace SchoolDatabase
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(LoginPage), adminInUse.Id.ToString());
+            this.Frame.Navigate(typeof(LoginPage));
         }
 
         private void AddCourseButton_Click(object sender, RoutedEventArgs e)
@@ -79,6 +79,9 @@ namespace SchoolDatabase
             this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage), adminInUse.Id.ToString());
         }
 
-        
+        private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

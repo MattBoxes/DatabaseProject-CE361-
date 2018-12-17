@@ -8,7 +8,7 @@ using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
-    public class Admin : People, IComparable<Admin>
+    public class Admin : People, IComparable <Admin>
 
     {
         List<Course> ListOfCourses;
@@ -163,11 +163,11 @@ namespace DataAccessLibrary
             throw new NotImplementedException();
         }
 
-        private async void DisplayInvalidEntry()
+        public async void DisplayInvalidEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
-                Title = "Enter a current Admin's information",
+                Title = "Admin information is invalid.",
                 CloseButtonText = "OK"
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync();

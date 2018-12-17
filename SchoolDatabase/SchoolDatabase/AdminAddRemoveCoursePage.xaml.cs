@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLibrary;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -30,6 +31,11 @@ namespace SchoolDatabase
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdminPage));
+        }
+
+        private void RemoveCourseButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
