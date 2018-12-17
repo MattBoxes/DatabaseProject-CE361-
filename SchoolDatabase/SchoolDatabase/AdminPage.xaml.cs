@@ -40,22 +40,19 @@ namespace SchoolDatabase
             this.Frame.Navigate(typeof(LoginPage));
         }
 
-
-        private void AddCourse_Click(object sender, RoutedEventArgs e)
+        private void AddCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            adminInUse.AddCourse(Course_ID.Text, Course_Name.Text);
+            this.Frame.Navigate(typeof(AdminAddRemoveCoursePage));
         }
 
-        private void ShowCoursesButton_Click(object sender, RoutedEventArgs e)
+        private void AddRemoveUserButton_Click(object sender, RoutedEventArgs e)
         {
-            //adminInUse.ViewListOfCourses();
+            this.Frame.Navigate(typeof(AdminAddRemoveUserPage));
         }
 
-        private void btnLogin(object sender, RoutedEventArgs e)
+        private void AddRemoveCoursesProfessorButton_Click(object sender, RoutedEventArgs e)
         {
-
+            this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage));
         }
-
-        
     }
 }
