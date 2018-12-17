@@ -110,10 +110,16 @@
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ProfessorChangePasswordPage.xaml.cs">
+      <DependentUpon>ProfessorChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProfessorPage.xaml.cs">
       <DependentUpon>ProfessorPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentChangePasswordPage.xaml.cs">
+      <DependentUpon>StudentChangePasswordPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StudentEnrollInClassPage.xaml.cs">
       <DependentUpon>StudentEnrollInClassPage.xaml</DependentUpon>
     </Compile>
@@ -132,6 +138,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\CAMPUS.png" />
+    <Content Include="Assets\COMPE 361 Logo.png" />
     <Content Include="Assets\SDSULOGO.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -167,7 +174,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ProfessorChangePasswordPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProfessorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StudentChangePasswordPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
