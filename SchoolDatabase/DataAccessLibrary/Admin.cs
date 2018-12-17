@@ -30,6 +30,13 @@ namespace DataAccessLibrary
         public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
       
+
+
+        /// <summary>
+        /// Insert into Course Table if Course ID does not exist yet, if already exists ignore the command
+        /// </summary>
+        /// <param name="courseID"></param>
+        /// <param name="courseName"></param>
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -39,7 +46,7 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT INTO Course (Course_ID, Course_Name) " +
+                insertCommand.CommandText = "INSERT OR IGNORE INTO Course (Course_ID, Course_Name) " +
                                                         $"VALUES ('{courseID}', '{courseName}')";
 
                 insertCommand.ExecuteReader();
@@ -48,9 +55,27 @@ namespace DataAccessLibrary
             }
         }
 
-        public void RemoveCourse(string courseName)
-        {
 
+        /// <summary>
+        /// Remove a course from the Table Course
+        /// </summary>
+        /// <param name="courseID"></param>
+        /// <param name="courseName"></param>
+        public void RemoveCourse(string courseID, string courseName)
+        {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = $"DELETE FROM Course WHERE Course_ID = {courseID};";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
 
         public void EditCourseName(string courseName, string newCourseName)
@@ -61,11 +86,49 @@ namespace DataAccessLibrary
             }
         }
 
-        public void AddUser(string firstname, string lastname, string id, string pw)
+        public void AddStudent(string firstname, string lastname, int id, string pw)
+        {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT OR IGNORE INTO Student (Student_ID, Password, First_Name, Last_Name) " +
+                                                        $"VALUES ('{id}', '{pw}', '{firstname}', '{lastname}')";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
+        public void AddProfessor(string firstname, string lastname, int id, string pw)
+        {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = "INSERT OR IGNORE INTO Professor (Professor_ID, Password, First_Name, Last_Name) " +
+                                                        $"VALUES ('{id}', '{pw}', '{firstname}', '{lastname}')";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
+        }
+
+
+        public void RemoveProfessor(string firstname, string lastname)
         {
 
         }
-        public void RemoveUser(string firstname, string lastname)
+
+        public void RemoveStudent(string firstname, string lastname)
         {
 
         }
@@ -100,7 +163,10 @@ namespace DataAccessLibrary
             throw new NotImplementedException();
         }
 
-
+        /// <summary>
+        /// Helper function to get all values of the Course_Name column from Course Table
+        /// </summary>
+        /// <returns></returns>
         private List<string> GetListOfCourseNames()
         {
             List<string> CourseNames = new List<string>();

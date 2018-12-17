@@ -81,7 +81,9 @@ namespace SchoolDatabase
         private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)
         {
             List<string> cList = new List<string>();
-            DisplayCoursesListView.ItemsSource = cList;
+            cList = adminInUse.ViewListOfCourses();
+            ShowCoursesListView.ItemsSource = cList;
+
         }
     }
 }
