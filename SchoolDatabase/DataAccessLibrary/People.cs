@@ -7,6 +7,12 @@ using Windows.UI.Xaml.Controls;
 
 namespace DataAccessLibrary
 {
+    /// <summary>
+    /// The People class is the parent class for all users, which are the Admin, Student,
+    /// and Professor child classes. It constructs the First name, Last Name, ID, and 
+    /// Passwords for each user, as well as implements some universal methods, including
+    /// for the IComparable interfaces unique to the child classes.
+    /// </summary>
     public class People
     {
         public string FirstName { get; set; }
@@ -24,12 +30,34 @@ namespace DataAccessLibrary
             this.Id = id;
             this.Password = pw;
         }
+        /// <summary>
+        /// Implemention of the Equals operator for all Users, 
+        /// checking for the users First and Last Name and ID
+        /// equality.
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            if (obj is People && obj != null)
+            {
+                People that = (People)obj;
+                return FirstName.Equals(that.FirstName) &&
+                    LastName.Equals(that.LastName) &&
+                    Id.Equals(that.Id);
+            }
+            return false;
+        }
 
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
-
+        /// <summary>
+        /// Returns the string of the User's First Name,
+        /// Last Name, and ID.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             if ((this.FirstName != null) && (this.LastName != null))

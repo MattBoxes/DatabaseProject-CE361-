@@ -7,17 +7,22 @@ using Windows.UI.Xaml.Controls; // For warning messages (ContentDialog)
 
 namespace DataAccessLibrary
 {
+    /// <summary>
+    /// The Student class contains the definitions and methods that define 
+    /// a Student user. A student can add and drop courses, and has an
+    /// assigned major, which restricts which courses can be added.
+    /// </summary>
     public class Student : People, IComparable<Student> // Implement Icomparable with class People
     {
         // List users for students
         List<People> ListOfUsers;
 
         // Variables in scope
-        public string Student_Major; 
+        public string Student_Major;
 
         /// <summary>
-        /// Create default value constructor 
-        /// This is creating the base slate for the student's information
+        /// Constructor for Student Class. Creates the Student's First Name,
+        /// Last Name, Password, Major, and ID.
         /// </summary>
         /// <param name="firstname"></param>
         /// <param name="lastname"></param>
@@ -31,9 +36,9 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Shows a warning message prompt to user 
+        /// Method to display a popup window when entering invalid course information
         /// </summary>
-        public async void DisplayInvalidStudentEntry()
+        private async void DisplayInvalidStudentEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
@@ -41,18 +46,6 @@ namespace DataAccessLibrary
                 CloseButtonText = "OK" // OK button
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync(); // Give result from Invalid Entry
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj is Student && obj != null)
-            {
-                Student that = (Student)obj;
-                return FirstName.Equals(that.FirstName) &&
-                    LastName.Equals(that.LastName) &&
-                    Id.Equals(that.Id);
-            }
-            return false;
         }
 
         /// <summary>
@@ -84,15 +77,6 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Object requirment #2 - GetHashCode()
-        /// </summary>
-        /// <returns></returns>
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
-        }
-
-        /// <summary>
         /// Object requirment #3 - ToString()
         /// Show contents for the student
         /// </summary>
@@ -100,7 +84,7 @@ namespace DataAccessLibrary
         public override string ToString()
         {       
             if ((this.FirstName != null) && (this.LastName != null))   
-                return $"{FirstName} {LastName}\n ID: {Id}\n Major: {Student_Major}";
+                return $"{FirstName} {LastName}\nID: {Id}\nMajor: {Student_Major}";
             else
                 return $"Null character entered";
         }
