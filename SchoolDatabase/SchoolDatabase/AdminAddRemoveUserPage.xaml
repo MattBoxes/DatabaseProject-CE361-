@@ -15,7 +15,7 @@
             <ComboBoxItem Content="Student"/>
         </ComboBox>
         <TextBox x:Name="LastNameTextBox" Text="" RequestedTheme="Light" Margin="154,316,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="Last Name" Visibility="Visible" Height="44" HorizontalAlignment="Left" Width="425" VerticalAlignment="Top"/>
-        <Button x:Name="AddUserButton" Content="Add User" HorizontalAlignment="Left" Margin="154,456,0,0" VerticalAlignment="Top" Height="44" FontWeight="Normal" FontSize="20"/>
+        <Button x:Name="AddUserButton" Content="Add User" HorizontalAlignment="Left" Margin="154,456,0,0" VerticalAlignment="Top" Height="44" FontWeight="Normal" FontSize="20" Click="AddUserButton_ClickAsync"/>
         <TextBlock x:Name="AddRemoveUserTextBlock" HorizontalAlignment="Left" Margin="154,24,0,0" Text="Add/Remove User" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="38" Height="44" Width="328"/>
         <TextBox x:Name="UserIDTextBox" Text="" RequestedTheme="Light" Margin="154,389,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="User ID" Visibility="Visible" Height="44" HorizontalAlignment="Left" Width="425" VerticalAlignment="Top"/>
         <TextBox x:Name="FirstNameTextBox" Text="" RequestedTheme="Light" Margin="154,243,0,0"  FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" PlaceholderText="First Name" Visibility="Visible" Height="44" HorizontalAlignment="Left" Width="425" VerticalAlignment="Top"/>
