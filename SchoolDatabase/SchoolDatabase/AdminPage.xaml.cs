@@ -82,7 +82,7 @@ namespace SchoolDatabase
         {
             List<string> cList = new List<string>();
             cList = adminInUse.ViewListOfCourses();
-            ShowCoursesListView.ItemsSource = cList;
+            DisplayCoursesListView.ItemsSource = cList;
 
         }
     }
