@@ -56,19 +56,103 @@ namespace SchoolDatabase
 
         private async void AddUserButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            if (SelectUserTypeToAddComboBox.SelectedIndex == 0)
-                adminInUse.AddProfessor(FirstNameTextBox.Text, LastNameTextBox.Text, Int32.Parse(UserIDTextBox.Text), "password");
-            else if (SelectUserTypeToAddComboBox.SelectedIndex == 1)
-                adminInUse.AddStudent(FirstNameTextBox.Text, LastNameTextBox.Text, Int32.Parse(UserIDTextBox.Text), "password");
+            if (SelectUserTypeToAddComboBox.SelectedIndex == 0 || SelectUserTypeToAddComboBox.SelectedIndex == 1)
+            {
+                if (FirstNameTextBox.Text != "")
+                {
+                    if (LastNameTextBox.Text != "")
+                    {
+                        if (SelectUserTypeToAddComboBox.SelectedIndex == 0)
+                        {
+                            if (UserIDTextBox.Text != "")
+                            {
+                                if (Int32.Parse(UserIDTextBox.Text) / 10000 == 8 && Int32.Parse(UserIDTextBox.Text) / 80000 == 1)
+                                {
+                                    adminInUse.AddProfessor(FirstNameTextBox.Text, LastNameTextBox.Text, Int32.Parse(UserIDTextBox.Text), "password");
+                                }
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Enter a valid professor user ID. (5 digits starting with the number 8)",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
+                            }
+                            else
+                            {
+                                ContentDialog InvalidEntry = new ContentDialog
+                                {
+                                    Title = "Enter a valid professor user ID. (5 digits starting with the number 8)",
+                                    CloseButtonText = "OK"
+                                };
+                                ContentDialogResult result = await InvalidEntry.ShowAsync();
+                            }
+                        }
+                        else if (SelectUserTypeToAddComboBox.SelectedIndex == 1)
+                        {
+                            if (UserIDTextBox.Text != "")
+                            {
+                                if (Int32.Parse(UserIDTextBox.Text) / 10000 == 7 && Int32.Parse(UserIDTextBox.Text) / 70000 == 1)
+                                {
+                                    adminInUse.AddStudent(FirstNameTextBox.Text, LastNameTextBox.Text, Int32.Parse(UserIDTextBox.Text), "password");
+                                }
+                                else
+                                {
+                                    ContentDialog InvalidEntry = new ContentDialog
+                                    {
+                                        Title = "Enter a valid student user ID. (5 digits starting with the number 7)",
+                                        CloseButtonText = "OK"
+                                    };
+                                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                                }
+                            }
+                            else
+                            {
+                                ContentDialog InvalidEntry = new ContentDialog
+                                {
+                                    Title = "Enter a valid student user ID. (5 digits starting with the number 7)",
+                                    CloseButtonText = "OK"
+                                };
+                                ContentDialogResult result = await InvalidEntry.ShowAsync();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        ContentDialog InvalidEntry = new ContentDialog
+                        {
+                            Title = "Enter a valid last name.",
+                            CloseButtonText = "OK"
+                        };
+                        ContentDialogResult result = await InvalidEntry.ShowAsync();
+                    }
+                }
+                else
+                {
+                    ContentDialog InvalidEntry = new ContentDialog
+                    {
+                        Title = "Enter a valid first name.",
+                        CloseButtonText = "OK"
+                    };
+                    ContentDialogResult result = await InvalidEntry.ShowAsync();
+                }
+            }
             else
             {
                 ContentDialog InvalidEntry = new ContentDialog
                 {
-                    Title = "Select type of User to Add!",
+                    Title = "Select type of user to add.",
                     CloseButtonText = "OK"
                 };
                 ContentDialogResult result = await InvalidEntry.ShowAsync();
             }
+        }
+
+        private void DisplayUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
