@@ -43,7 +43,10 @@ namespace DataAccessLibrary
         }
         public void EditCourseName(string courseName, string newCourseName)
         {
+            if ((courseName != null) && (newCourseName != null)
+            {
 
+            }
         }
         public void AddUser(string firstname, string lastname, string id, string pw)
         {
