@@ -121,29 +121,27 @@ namespace DataAccessLibrary
         ///// Gets rows of data from a SQLite database.
         ///// </summary>
         ///// <returns></returns>
-        //public static List<String> GetData()
-        //{
-        //    List<String> entries = new List<string>();
+        public static List<string> GetData(string table, string column)
+        {
+            List<string> entries = new List<string>();
 
-        //    using (SqliteConnection db =
-        //        new SqliteConnection("Filename=sqliteSample.db"))
-        //    {
-        //        db.Open();
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
 
-        //        SqliteCommand selectCommand = new SqliteCommand
-        //            ("SELECT Text_Entry from MyTable", db);
+                SqliteCommand selectCommand = new SqliteCommand($"SELECT {column} from {table}", db);
 
-        //        SqliteDataReader query = selectCommand.ExecuteReader();
+                SqliteDataReader query = selectCommand.ExecuteReader();
 
-        //        while (query.Read())
-        //        {
-        //            entries.Add(query.GetString(0));
-        //        }
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
 
-        //        db.Close();
-        //    }
+                db.Close();
+            }
 
-        //    return entries;
-        //}
+            return entries;
+        }
     }
 }
