@@ -15,6 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using SQLitePCL;
 using Windows.Storage;
 using DataAccessLibrary;
+using Windows.UI.Core;
+using System.Windows.Input;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -32,7 +34,7 @@ namespace SchoolDatabase
 
         private async void LoginButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-            if(SelectPositionComboBox.SelectedIndex == 0)
+            if (SelectPositionComboBox.SelectedIndex == 0)
             {
                 List<string> admin_ids = DataAccess.GetData("Admin", "Admin_ID");
                 List<string> admin_passwords = DataAccess.GetData("Admin", "Password");
@@ -62,11 +64,11 @@ namespace SchoolDatabase
                                 }
                             }
                         }
-                    }  
+                    }
                 }
-                
+
             }
-            else if(SelectPositionComboBox.SelectedIndex == 1)
+            else if (SelectPositionComboBox.SelectedIndex == 1)
             {
                 List<string> prof_ids = DataAccess.GetData("Professor", "Professor_ID");
                 List<string> prof_passwords = DataAccess.GetData("Professor", "Password");
@@ -98,9 +100,9 @@ namespace SchoolDatabase
                         }
                     }
                 }
-                
+
             }
-            else if(SelectPositionComboBox.SelectedIndex == 2)
+            else if (SelectPositionComboBox.SelectedIndex == 2)
             {
                 List<string> student_ids = DataAccess.GetData("Student", "Student_ID");
                 List<string> student_passwords = DataAccess.GetData("Student", "Password");
