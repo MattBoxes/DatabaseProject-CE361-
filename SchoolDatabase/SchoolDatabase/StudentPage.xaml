@@ -19,6 +19,18 @@
 
         <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="844" FontSize="20" FontWeight="Normal" HorizontalAlignment="Left" Click="DisplayYourInformationButton_Click"/>
 
+        <TextBlock x:Name="FirstNameTextBlock" HorizontalAlignment="Left" Margin="155,367,0,0" Text="First Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+       
+        <TextBlock x:Name="UserFirstNameTextBlock" HorizontalAlignment="Left" Margin="155,399,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+       
+        <TextBlock x:Name="LastNameTextBlock" HorizontalAlignment="Left" Margin="155,478,0,0" Text="Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+       
+        <TextBlock x:Name="UserLastNameTextBlock" HorizontalAlignment="Left" Margin="155,510,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+       
+        <TextBlock x:Name="UserIDTextBlock" HorizontalAlignment="Left" Margin="155,589,0,0" Text="User ID" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+        
+        <TextBlock x:Name="UserUserIDTextBlock" HorizontalAlignment="Left" Margin="155,621,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+
         <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black">
 
             <ListView.HeaderTemplate>
@@ -49,13 +61,6 @@
             </ListView.ItemTemplate>
 
         </ListView>
-
-        <TextBlock x:Name="FirstNameTextBlock" HorizontalAlignment="Left" Margin="155,367,0,0" Text="First Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
-        <TextBlock x:Name="UserFirstNameTextBlock" HorizontalAlignment="Left" Margin="155,399,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
-        <TextBlock x:Name="LastNameTextBlock" HorizontalAlignment="Left" Margin="155,478,0,0" Text="Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
-        <TextBlock x:Name="UserLastNameTextBlock" HorizontalAlignment="Left" Margin="155,510,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
-        <TextBlock x:Name="UserIDTextBlock" HorizontalAlignment="Left" Margin="155,589,0,0" Text="User ID" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
-        <TextBlock x:Name="UserUserIDTextBlock" HorizontalAlignment="Left" Margin="155,621,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
 
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
 
