@@ -16,18 +16,12 @@ namespace DataAccessLibrary
         // List users for students
         List<People> ListOfUsers;
 
-        // Variables in scope
-        public string Student_Major;
-
         /// <summary>
         /// Constructor for Student Class. Creates the Student's First Name,
         /// Last Name, Password, Major, and ID.
         /// </summary>
-        public Student(string firstname, string lastname, int id, string pw, string major)
-            : base(firstname, lastname, id, pw)
-        {
-            this.Student_Major = major;
-        }
+        public Student(string firstname, string lastname, int id, string pw)
+            : base(firstname, lastname, id, pw) { }
 
         /// <summary>
         /// Method to display a popup window when entering invalid course information
@@ -77,7 +71,7 @@ namespace DataAccessLibrary
         public override string ToString()
         {       
             if ((this.FirstName != null) && (this.LastName != null))   
-                return $"{FirstName} {LastName}\nID: {Id}\nMajor: {Student_Major}";
+                return $"{FirstName} {LastName}\nID: {Id}";
             else
                 return $"Null character entered";
         }
