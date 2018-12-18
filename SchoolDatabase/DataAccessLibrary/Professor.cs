@@ -8,25 +8,17 @@ using Windows.UI.Xaml.Controls;
 namespace DataAccessLibrary
 {
     /// <summary>
-    /// The Professor class contains the definition and methods that define
-    /// the Professor user. The professor has a degree, in addition to the 
-    /// parent constructor parameters, and has permission to add and drop 
-    /// students from courses, as well as change their grades.
+    /// A professor can add and drop students from courses, as well as change their grades.
     /// </summary>
     public class Professor : People, IComparable<Professor>
     {
-        public string Prof_Degree;
         public List<Course> ListOfCourses;
 
         /// <summary>
-        /// Constructor for Professor Class. Creates the Professor's First Name,
-        /// Last Name, Password, Degree, and ID.
+        /// Constructor for Professor class.
         /// </summary>
-        public Professor(string firstname, string lastname, int id, string pw, string degree)
-            : base(firstname, lastname, id, pw)
-        {
-            this.Prof_Degree = degree;
-        }
+        public Professor(string firstname, string lastname, int id, string pw)
+            : base(firstname, lastname, id, pw) { }
 
         public void DropStudentFromCourse (Student std, Course course)
         {
@@ -44,27 +36,26 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Method to display a popup window when entering invalid Professor information
+        /// Displays a pop-up window when invalid professor information is being used.
         /// </summary>
-        private async void DisplayInvalidProfEntry()
+        private async void DisplayInvalidProfessorEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
-                Title = "Enter a current Professor's information", // Message prompt
-                CloseButtonText = "OK" // OK button
+                Title = "Invalid professor information.", //Message prompt
+                CloseButtonText = "OK" //OK button
             };
-            ContentDialogResult result = await InvalidEntry.ShowAsync(); // Give result from Invalid Entry
+            ContentDialogResult result = await InvalidEntry.ShowAsync(); //Give result from Invalid Entry
         }
 
         /// <summary>
-        /// CompareTo Implementation of IComparable Interface that compares Professors by Last Name, then
-        /// First Name, then unique ID.
+        /// Compares last names, first names, then user IDs.
         /// </summary>
         public int CompareTo(Professor obj)
         {
             if (obj == null)
             {
-                DisplayInvalidProfEntry();
+                DisplayInvalidProfessorEntry();
                 return -1;
             }
             else
@@ -82,15 +73,41 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Returns the string of the Professor's First Name, Last Name,
-        /// Degree, and ID.
+        /// Returns professor's first name, last name, and user ID in a string.
         /// </summary>
         public override string ToString()
         {
-            if ((this.FirstName != null) && (this.LastName != null))
-                return $"{this.FirstName} {this.LastName}\nID: {Id}\nDegree: {Prof_Degree}\n";
+            if ((FirstName != null) && (LastName != null) && (Id != 0))
+                return $"Name: {FirstName} {LastName} ID: {Id}";
             else
-                return $"Null character entered\n";
+            {
+                DisplayInvalidProfessorEntry();
+                return $"Null character entered.";
+            }
+        }
+
+        /// <summary>
+        /// Returns object's hash code.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// Returns true if both objets are equal, and false otherwise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (obj is Professor && obj != null)
+            {
+                Professor that = (Professor)obj;
+                return FirstName.Equals(that.FirstName) &&
+                       LastName.Equals(that.LastName) &&
+                       Id.Equals(that.Id) &&
+                       Password.Equals(that.Password);
+            }
+            return false;
         }
     }
 }

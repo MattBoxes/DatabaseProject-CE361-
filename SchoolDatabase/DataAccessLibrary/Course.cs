@@ -22,7 +22,7 @@ namespace DataAccessLibrary
         public int GradePoint { get; set; }
 
         /// <summary>
-        /// Constructor for Course Class. Creates the Course Name and ID.
+        /// Constructor for Course class.
         /// </summary>
         public Course(string inName, string inID, int profid, int grade)
         {
@@ -33,8 +33,7 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Implemention of the Equals operator, checking for Course Name and ID
-        /// equality.
+        /// Returns true if both objets are equal, and false otherwise.
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -42,32 +41,35 @@ namespace DataAccessLibrary
             {
                 Course that = (Course)obj;
                 return Name.Equals(that.Name) &&
-                    Id.Equals(that.Id);
+                       Id.Equals(that.Id) &&
+                       ProfessorId.Equals(that.ProfessorId);
             }
             return false;
         }
 
+        /// <summary>
+        /// Returns object's hash code.
+        /// </summary>
         public override int GetHashCode()
         {
             return base.GetHashCode();
         }
 
         /// <summary>
-        /// Method to display a popup window when entering invalid course information
+        /// Displays a pop-up window when invalid course information is being used.
         /// </summary>
         private async void DisplayInvalidCourseEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
-                Title = "Course information is invalid.",
+                Title = "Invalid course information.",
                 CloseButtonText = "OK"
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync();
         }
 
         /// <summary>
-        /// CompareTo Implementation of IComparable Interface that compares by Course Name First, then the
-        /// unique Course ID, if the parent name is of the same major/degree.
+        /// Compares names, then IDs.
         /// </summary>
         public int CompareTo(Course obj)
         {
@@ -87,14 +89,17 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Returns the string of the Course Name and ID
+        /// Returns course's name, and ID in a string.
         /// </summary>
         public override string ToString()
         {
-            if ((this.Name != null) && (this.Id != null))
-                return $"{this.Name}\n{this.Id}\n";
+            if ((Name != null) && (Id != null))
+                return $"Name: {Name} ID: {Id}";
             else
+            {
+                DisplayInvalidCourseEntry();
                 return $"Null character entered";
+            }
         }
     }
 }

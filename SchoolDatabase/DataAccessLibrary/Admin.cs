@@ -9,9 +9,7 @@ using Windows.UI.Xaml.Controls;
 namespace DataAccessLibrary
 {
     /// <summary>
-    /// The Admin class contains the definition and methods used by the database
-    /// to define the Admin user, who has full control of the database and all its
-    /// information.
+    /// An admin can add and remove users, assign professors to courses, and add and remove courses.
     /// </summary>
     public class Admin : People, IComparable<Admin>
     {
@@ -19,8 +17,7 @@ namespace DataAccessLibrary
         List<People> ListOfUsers;
 
         /// <summary>
-        /// Constructor for Admin Class. Creates the Admin's First Name,
-        /// Last Name, Password, and ID.
+        /// Constructor for Admin class.
         /// </summary>
         public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
@@ -469,13 +466,40 @@ namespace DataAccessLibrary
         public void EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
-        }       
-
-        public override bool Equals(object obj)
-        {
-            throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Displays a pop-up window when invalid admin information is being used.
+        /// </summary>
+        private async void DisplayInvalidAdminEntry()
+        {
+            ContentDialog InvalidEntry = new ContentDialog
+            {
+                Title = "Invalid admin information.", //Message prompt
+                CloseButtonText = "OK" //OK button
+            };
+            ContentDialogResult result = await InvalidEntry.ShowAsync(); //Give result from Invalid Entry
+        }
+
+        /// <summary>
+        /// Returns true if both objets are equal, and false otherwise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (obj is Admin && obj != null)
+            {
+                Admin that = (Admin)obj;
+                return FirstName.Equals(that.FirstName) &&
+                       LastName.Equals(that.LastName) &&
+                       Id.Equals(that.Id) &&
+                       Password.Equals(that.Password);
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Returns object's hash code.
+        /// </summary>
         public override int GetHashCode()
         {
             return base.GetHashCode();
@@ -485,35 +509,23 @@ namespace DataAccessLibrary
         {
             throw new NotImplementedException();
         }
-        
+
         /// <summary>
-        /// Returns the string of the Admin's First Name, Last Name,
-        /// and ID
+        /// Returns admin's first name, last name, and ID in a string.
         /// </summary>
         public override string ToString()
         {
-            if ((this.FirstName != null) && (this.LastName != null) && (this.Password != null))
-                return $"{this.FirstName} {this.LastName}\nID: {Id}\nPassword {Password}";
+            if ((FirstName != null) && (LastName != null) && (Id != 0))
+                return $"Name: {FirstName} {LastName} ID: {Id}";
             else
+            { 
+                DisplayInvalidAdminEntry();
                 return $"Null character entered";
+            }
         }
-        
+
         /// <summary>
-        /// Method to display a popup window when entering invalid Admin information
-        /// </summary>
-        private async void DisplayInvalidAdminEntry()
-        {
-            ContentDialog InvalidEntry = new ContentDialog
-            {
-                Title = "Admin information is invalid.",
-                CloseButtonText = "OK"
-            };
-            ContentDialogResult result = await InvalidEntry.ShowAsync();
-        }
-        
-        /// <summary>
-        /// CompareTo Implementation of IComparable Interface that compares Admins by First Name, then 
-        /// Last Name, then unique ID.
+        /// Compares last names, first names, then user IDs.
         /// </summary>
         public int CompareTo(Admin obj)
         {

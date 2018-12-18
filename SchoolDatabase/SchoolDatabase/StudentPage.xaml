@@ -18,7 +18,7 @@
 
         <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="844" FontSize="20" FontWeight="Normal" HorizontalAlignment="Left"/>
 
-        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black" SelectionChanged="DisplayYourInformationListView_SelectionChanged">
+        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black">
 
             <ListView.HeaderTemplate>
                 <DataTemplate>
