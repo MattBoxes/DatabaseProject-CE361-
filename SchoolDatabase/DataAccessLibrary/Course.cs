@@ -19,16 +19,23 @@ namespace DataAccessLibrary
 
         public int ProfessorId { get; set; }
 
+        public int GradePoint { get; set; }
+
         /// <summary>
         /// Constructor for Course Class. Creates the Course Name and ID.
         /// </summary>
         /// <param name="inName"></param>
         /// <param name="inID"></param>
-        public Course(string inName, string inID)
+        public Course(string inName, string inID, int profid, int grade)
         {
             this.Name = inName;
             this.Id = inID;
+            this.ProfessorId = profid;
+            this.GradePoint = grade;
         }
+
+
+
         /// <summary>
         /// Implemention of the Equals operator, checking for Course Name and ID
         /// equality.

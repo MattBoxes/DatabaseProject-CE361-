@@ -109,6 +109,7 @@
     <Compile Include="Admin.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="DataAccess.cs" />
+    <Compile Include="Grade.cs" />
     <Compile Include="People.cs" />
     <Compile Include="Professor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
