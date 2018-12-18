@@ -9,8 +9,7 @@ namespace DataAccessLibrary
 {
     /// <summary>
     /// The Student class contains the definitions and methods that define 
-    /// a Student user. A student can add and drop courses, and has an
-    /// assigned major, which restricts which courses can be added.
+    /// a student user. A student can add and drop courses.
     /// </summary>
     public class Student : People, IComparable<Student> // Implement Icomparable with class People
     {
@@ -24,11 +23,6 @@ namespace DataAccessLibrary
         /// Constructor for Student Class. Creates the Student's First Name,
         /// Last Name, Password, Major, and ID.
         /// </summary>
-        /// <param name="firstname"></param>
-        /// <param name="lastname"></param>
-        /// <param name="id"></param>
-        /// <param name="pw"></param>
-        /// <param name="major"></param>
         public Student(string firstname, string lastname, int id, string pw, string major)
             : base(firstname, lastname, id, pw)
         {
