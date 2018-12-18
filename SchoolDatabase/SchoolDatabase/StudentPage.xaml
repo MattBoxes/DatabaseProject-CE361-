@@ -16,17 +16,19 @@
 
         <Button x:Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="376,168,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="178" Click="ChangePasswordButton_Click"/>
 
-        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" HorizontalAlignment="Left" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="699" FontSize="20" FontWeight="Normal"/>
+        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="844" FontSize="20" FontWeight="Normal" HorizontalAlignment="Left"/>
 
-        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="556,349,0,0" VerticalAlignment="Top" Width="297.5" BorderThickness="2,2,2,2" BorderBrush="Black" SelectionChanged="DisplayYourInformationListView_SelectionChanged">
+        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black" SelectionChanged="DisplayYourInformationListView_SelectionChanged">
 
             <ListView.HeaderTemplate>
                 <DataTemplate>
                     <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}" Height="49">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="297.5"/>
+                            <ColumnDefinition Width="177.5"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Text="Courses" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                        <TextBlock Grid.Column="0" Text="Courses" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                        <TextBlock Grid.Column="1" Text="Grade" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
@@ -35,14 +37,18 @@
                     <Grid Height="48">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="297.5"/>
+                            <ColumnDefinition Width="177.5"/>
                         </Grid.ColumnDefinitions>
 
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="" />
                         <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="" />
+
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
 
         </ListView>
+
         <TextBlock x:Name="FirstNameTextBlock" HorizontalAlignment="Left" Margin="155,367,0,0" Text="First Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
         <TextBlock x:Name="UserFirstNameTextBlock" HorizontalAlignment="Left" Margin="155,399,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
         <TextBlock x:Name="LastNameTextBlock" HorizontalAlignment="Left" Margin="155,478,0,0" Text="Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>

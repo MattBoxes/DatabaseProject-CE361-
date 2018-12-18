@@ -13,30 +13,21 @@ namespace DataAccessLibrary
     /// to define the Admin user, who has full control of the database and all its
     /// information.
     /// </summary>
-    public class Admin : People, IComparable <Admin>
+    public class Admin : People, IComparable<Admin>
     {
         List<Course> ListOfCourses;
         List<People> ListOfUsers;
-
 
         /// <summary>
         /// Constructor for Admin Class. Creates the Admin's First Name,
         /// Last Name, Password, and ID.
         /// </summary>
-        /// <param name="firstname"></param>
-        /// <param name="lastname"></param>
-        /// <param name="id"></param>
-        /// <param name="pw"></param>
         public Admin(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw)  {}
       
-
-
         /// <summary>
         /// Insert into Course Table if Course ID does not exist yet, if already exists ignore the command
         /// </summary>
-        /// <param name="courseID"></param>
-        /// <param name="courseName"></param>
         public void AddCourse(string courseID, string courseName)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -55,12 +46,9 @@ namespace DataAccessLibrary
             }
         }
 
-
         /// <summary>
         /// Remove a course from the Table Course
         /// </summary>
-        /// <param name="courseID"></param>
-        /// <param name="courseName"></param>
         public void RemoveCourse(string courseID)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -121,7 +109,6 @@ namespace DataAccessLibrary
                 db.Close();
             }
         }
-
 
         public void RemoveProfessor(int profID)
         {
@@ -213,7 +200,6 @@ namespace DataAccessLibrary
 
             return CourseNames;
         }
-
 
         /// <summary>
         /// Helper function to get values of Course_ID from Course Table
@@ -371,8 +357,6 @@ namespace DataAccessLibrary
             return studentList;
         }
 
-
-
         private List<int> GetListOfProfessorIDs()
         {
             List<int> ProfessorIDs = new List<int>();
@@ -482,9 +466,6 @@ namespace DataAccessLibrary
             return profList;
         }
 
-        
-        
-
         public void EditStudentMajor(string firstname, string lastname, string newMajor)
         {
             throw new NotImplementedException();
@@ -509,7 +490,6 @@ namespace DataAccessLibrary
         /// Returns the string of the Admin's First Name, Last Name,
         /// and ID
         /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             if ((this.FirstName != null) && (this.LastName != null) && (this.Password != null))
@@ -531,13 +511,10 @@ namespace DataAccessLibrary
             ContentDialogResult result = await InvalidEntry.ShowAsync();
         }
         
-        
         /// <summary>
         /// CompareTo Implementation of IComparable Interface that compares Admins by First Name, then 
         /// Last Name, then unique ID.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public int CompareTo(Admin obj)
         {
             if (obj == null)

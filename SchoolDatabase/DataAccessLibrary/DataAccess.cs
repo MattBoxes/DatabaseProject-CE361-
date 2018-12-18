@@ -96,6 +96,32 @@ namespace DataAccessLibrary
             }
         }
 
+        /// <summary>
+        /// Gets rows of data from a SQLite database.
+        /// </summary>
+        public static List<string> GetData(string table, string column)
+        {
+            List<string> entries = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand($"SELECT {column} FROM {table}", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    entries.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return entries;
+        }
+
         ///// <summary>
         ///// Inserts data into the SQLite database.
         ///// </summary>
@@ -120,32 +146,5 @@ namespace DataAccessLibrary
         //    }
 
         //}
-
-        ///// <summary>
-        ///// Gets rows of data from a SQLite database.
-        ///// </summary>
-        ///// <returns></returns>
-        public static List<string> GetData(string table, string column)
-        {
-            List<string> entries = new List<string>();
-
-            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
-            {
-                db.Open();
-
-                SqliteCommand selectCommand = new SqliteCommand($"SELECT {column} FROM {table}", db);
-
-                SqliteDataReader query = selectCommand.ExecuteReader();
-
-                while (query.Read())
-                {
-                    entries.Add(query.GetString(0));
-                }
-
-                db.Close();
-            }
-
-            return entries;
-        }
     }
 }
