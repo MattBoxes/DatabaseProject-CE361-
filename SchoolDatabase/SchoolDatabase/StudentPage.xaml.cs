@@ -26,8 +26,6 @@ namespace SchoolDatabase
 
         Student studentInUse;
 
-       
-
         public StudentPage()
         {
             this.InitializeComponent();
@@ -51,16 +49,25 @@ namespace SchoolDatabase
             }
         }
 
+        /// <summary>
+        /// Navigates to LoginPage when the Back button is clicked.
+        /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
 
+        /// <summary>
+        /// Navigates to StudentEnrollInClassPage when the EnrollInCourse button is clicked.
+        /// </summary>
         private void EnrollInCourseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(StudentEnrollInClassPage));
         }
 
+        /// <summary>
+        /// Navigates to StudentChangePasswordPage when the ChangePassword button is clicked.
+        /// </summary>
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(StudentChangePasswordPage));

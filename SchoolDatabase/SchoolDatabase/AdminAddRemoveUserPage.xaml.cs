@@ -51,6 +51,9 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Navigates to AdminPage when the Back button is clicked.
+        /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdminPage), adminInUse.Id.ToString());

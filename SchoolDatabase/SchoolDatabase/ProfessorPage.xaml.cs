@@ -27,16 +27,25 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Navigates to LoginPage when the Back button is clicked.
+        /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
 
+        /// <summary>
+        /// Navigates to ProfessorChangeStudentGradeEnrollmentPage when the ChangeStudentsGradeEnrollment button is clicked.
+        /// </summary>
         private void ChangeStudentsGradeEnrollmentButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ProfessorChangeStudentGradeEnrollmentPage));
         }
 
+        /// <summary>
+        /// Navigates to ProfessorChangePasswordPage when the ChangePassword button is clicked.
+        /// </summary>
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(ProfessorChangePasswordPage));

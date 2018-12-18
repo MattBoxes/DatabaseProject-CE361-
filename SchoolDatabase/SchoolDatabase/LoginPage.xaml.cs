@@ -32,6 +32,10 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// If the user ID and password are correct, navigates to the appropriate user page when the Login
+        /// button is pressed based off of imformation entered in the Login page.
+        /// </summary>
         private async void LoginButton_ClickAsync(object sender, RoutedEventArgs e)
         {
             if (SelectPositionComboBox.SelectedIndex == 0)
