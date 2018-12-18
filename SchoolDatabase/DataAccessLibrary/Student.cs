@@ -3,43 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Windows.UI.Xaml.Controls; // For warning messages (ContentDialog)
+using Windows.UI.Xaml.Controls; //For warning messages (ContentDialog)
 using Microsoft.Data.Sqlite;
 
 namespace DataAccessLibrary
 {
     /// <summary>
-    /// The Student class contains the definitions and methods that define 
-    /// a student user. A student can add and drop courses.
+    /// A student can enroll in classes.
     /// </summary>
-    public class Student : People, IComparable<Student> // Implement Icomparable with class People
+    public class Student : People, IComparable<Student>
     {
-        // List users for students
         List<People> ListOfUsers;
 
         /// <summary>
-        /// Constructor for Student Class. Creates the Student's First Name,
-        /// Last Name, Password, Major, and ID.
+        /// Constructor for Student class.
         /// </summary>
         public Student(string firstname, string lastname, int id, string pw)
             : base(firstname, lastname, id, pw) { }
 
         /// <summary>
-        /// Method to display a popup window when entering invalid course information
+        /// Displays a pop-up window when invalid studnet information is being used.
         /// </summary>
         private async void DisplayInvalidStudentEntry()
         {
             ContentDialog InvalidEntry = new ContentDialog
             {
-                Title = "Enter a current Student information", // Message prompt
+                Title = "Invalid student information.", // Message prompt
                 CloseButtonText = "OK" // OK button
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync(); // Give result from Invalid Entry
         }
 
         /// <summary>
-        /// Object requirement #1 - CompareTo()
-        /// Compare: last names -> first names -> Id
+        /// Compares last names, first names, then user IDs.
         /// </summary>
         public int CompareTo(Student obj)
         {
@@ -63,15 +59,41 @@ namespace DataAccessLibrary
         }
 
         /// <summary>
-        /// Object requirment #3 - ToString()
-        /// Show contents for the student
+        /// Returns student's first name, last name, and user ID in a string.
         /// </summary>
         public override string ToString()
-        {       
-            if ((this.FirstName != null) && (this.LastName != null))   
-                return $"{FirstName} {LastName}\nID: {Id}";
+        {
+            if ((FirstName != null) && (LastName != null) && (Id != 0))
+                return $"Name: {FirstName} {LastName} ID: {Id}";
             else
-                return $"Null character entered";
+            {
+                DisplayInvalidStudentEntry();
+                return $"Null character entered.";
+            }
+        }
+
+        /// <summary>
+        /// Returns object's hash code.
+        /// </summary>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// Returns true if both objets are equal, and false otherwise.
+        /// </summary>
+        public override bool Equals(object obj)
+        {
+            if (obj is Student && obj != null)
+            {
+                Student that = (Student)obj;
+                return FirstName.Equals(that.FirstName) &&
+                       LastName.Equals(that.LastName) &&
+                       Id.Equals(that.Id) &&
+                       Password.Equals(that.Password);
+            }
+            return false;
         }
 
         /// <summary>
