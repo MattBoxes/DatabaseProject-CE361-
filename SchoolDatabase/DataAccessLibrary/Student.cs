@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls; // For warning messages (ContentDialog)
+using Microsoft.Data.Sqlite;
 
 namespace DataAccessLibrary
 {
@@ -71,6 +72,118 @@ namespace DataAccessLibrary
                 return $"{FirstName} {LastName}\nID: {Id}";
             else
                 return $"Null character entered";
+        }
+
+        /// <summary>
+        /// Using relations in database, retrieve a list of Courses that this Student enrolls in
+        /// </summary>
+        /// <returns>A List of Course</returns>
+        public List<Course> GetCourses()
+        {
+            List<string> Grades = new List<string>();
+            List<string> StudentIDs = new List<string>();
+            List<string> CourseIDsfromGrade = new List<string>();
+            List<string> CourseIDsfromCourse = new List<string>();
+            List<string> CourseNames = new List<string>();
+            List<string> ProfIdsfromCourse = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Student_ID FROM Grade", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    StudentIDs.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT GradePoint FROM Grade", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    Grades.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Course_ID FROM Grade", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIDsfromGrade.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Course_ID FROM Course", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIDsfromCourse.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Course_Name FROM Course", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    ProfIdsfromCourse.Add(query.GetString(0));
+                }
+
+
+                db.Close();
+            }
+
+            List<string> thisStudentGrades = new List<string>();
+            for (int i = 0; i < StudentIDs.Count; i++)
+            {
+                if (StudentIDs[i] == this.Id.ToString())
+                    thisStudentGrades.Add(Grades[i]);
+            }
+
+
+            List<string> thisStudentCoursesIDs = new List<string>();
+            for (int i = 0; i < StudentIDs.Count; i++)
+            {
+                if (StudentIDs[i] == this.Id.ToString())
+                    thisStudentCoursesIDs.Add(CourseIDsfromGrade[i]);
+            }
+
+            List<string> thisStudentCoursesNames = new List<string>();
+            for (int i = 0; i < CourseIDsfromCourse.Count; i++)
+            {
+                if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[i])
+                    thisStudentCoursesNames.Add(CourseNames[i]);
+            }
+
+            List<string> thisStudentProfIds = new List<string>();
+            for (int i = 0; i < CourseIDsfromCourse.Count; i++)
+            {
+                if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[i])
+                    thisStudentProfIds.Add(ProfIdsfromCourse[i]);
+            }
+
+            List<Course> courseList = new List<Course>();
+            for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
+                courseList.Add(new Course(thisStudentCoursesNames[i], thisStudentCoursesIDs[i], Int32.Parse(thisStudentProfIds[i]), Int32.Parse(thisStudentGrades[i])));
+            
+
+            return courseList;
         }
     }
 }
