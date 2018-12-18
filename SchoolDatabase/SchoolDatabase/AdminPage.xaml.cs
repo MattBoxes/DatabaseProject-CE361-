@@ -80,8 +80,8 @@ namespace SchoolDatabase
 
         private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)
         {
-            List<string> cList = new List<string>();
-            cList = adminInUse.ViewListOfCourses();
+            List<Course> cList = new List<Course>();
+            cList = adminInUse.GetListOfCourses();
             DisplayCoursesListView.ItemsSource = cList;
         }
     }
