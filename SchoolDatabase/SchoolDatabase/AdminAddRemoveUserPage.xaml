@@ -37,8 +37,38 @@
         </ComboBox>
 
         <Button x:Name="DisplayUsersButton" Content="Display Users" HorizontalAlignment="Left" Margin="1156,171,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" Height="44" Click="DisplayUsersButton_Click" Width="190"/>
+    
+        <ListView x:Name="RemoveUserListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" Width="571" HorizontalAlignment="Left">
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="User ID" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="1" Text="Last Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                        <TextBlock Grid.Column="2" Text="First Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="TableDataTemplate">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="190"/>
+                            <ColumnDefinition Width="190"/>
+                        </Grid.ColumnDefinitions>
 
-        <ListView x:Name="RemoveUserListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" Width="571" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="" />
+                        <TextBlock Grid.Column="2" VerticalAlignment="Center" Text="" />
+                        <TextBlock Grid.Column="3" VerticalAlignment="Center" Text="" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
 
         <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="775,663,0,0" VerticalAlignment="Top" Height="44" Width="146" FontWeight="Normal" FontSize="20"/>
 

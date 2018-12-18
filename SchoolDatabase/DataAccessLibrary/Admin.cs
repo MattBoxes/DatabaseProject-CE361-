@@ -61,7 +61,7 @@ namespace DataAccessLibrary
         /// </summary>
         /// <param name="courseID"></param>
         /// <param name="courseName"></param>
-        public void RemoveCourse(string courseID, string courseName)
+        public void RemoveCourse(string courseID)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
@@ -123,14 +123,38 @@ namespace DataAccessLibrary
         }
 
 
-        public void RemoveProfessor(string firstname, string lastname)
+        public void RemoveProfessor(int profID)
         {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
 
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = $"DELETE FROM Professor WHERE Professor_ID = {profID};";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
 
-        public void RemoveStudent(string firstname, string lastname)
+        public void RemoveStudent(int studentID)
         {
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
 
+                SqliteCommand insertCommand = new SqliteCommand();
+                insertCommand.Connection = db;
+
+                insertCommand.CommandText = $"DELETE FROM Course WHERE Course_ID = {studentID};";
+
+                insertCommand.ExecuteReader();
+
+                db.Close();
+            }
         }
 
         public void EditUserName(string nfirstName, string nlastname, string firstname, string lastname)

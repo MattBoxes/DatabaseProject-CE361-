@@ -24,6 +24,8 @@ namespace SchoolDatabase
     public sealed partial class AdminAddRemoveUserPage : Page
     {
         Admin adminInUse;
+
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string param_id = (string)e.Parameter;
@@ -152,7 +154,27 @@ namespace SchoolDatabase
 
         private void DisplayUsersButton_Click(object sender, RoutedEventArgs e)
         {
+        
+        }
 
+        string selectedIndex;
+
+        private void RemoveUserListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            selectedIndex = "";
+
+            // Prevent errors when nothing was selected
+            if (RemoveUserListView.SelectedItems.Count > 0)
+            {
+                if (RemoveUserListView.SelectedItems[0] != null)
+                {
+                    selectedIndex = RemoveUserListView.SelectedItems[0].ToString();
+                }
+                else
+                {
+                    selectedIndex = "";
+                }
+            }
         }
     }
 }
