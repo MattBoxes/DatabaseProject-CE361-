@@ -38,16 +38,18 @@
         </ComboBox>
 
         <Button x:Name="DisplayUsersButton" Content="Display Users" HorizontalAlignment="Left" Margin="1156,171,0,0" VerticalAlignment="Top" FontSize="20" FontWeight="Normal" Height="44" Click="DisplayUsersButton_ClickAsync" Width="190"/>
-    
-        <ListView x:Name="RemoveUserListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" Width="571" HorizontalAlignment="Left" BorderBrush="Black">
+
+        <ListView x:Name="RemoveUserListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" Width="571" HorizontalAlignment="Left" BorderThickness="2,2,2,2" BorderBrush="Black">
+           
             <ListView.HeaderTemplate>
                 <DataTemplate>
-                    <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}">
+                    <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}" Height="50" HorizontalAlignment="Stretch" Margin="0,0,0,0" VerticalAlignment="Stretch">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="190"/>
                             <ColumnDefinition Width="190"/>
                         </Grid.ColumnDefinitions>
+                      
                         <TextBlock Grid.Column="0" Text="User ID" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         <TextBlock Grid.Column="1" Text="Last Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
                         <TextBlock Grid.Column="2" Text="First Name" Style="{ThemeResource CaptionTextBlockStyle}"/>
@@ -69,6 +71,7 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
+
         </ListView>
 
         <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="775,663,0,0" VerticalAlignment="Top" Height="44" Width="146" FontWeight="Normal" FontSize="20"/>

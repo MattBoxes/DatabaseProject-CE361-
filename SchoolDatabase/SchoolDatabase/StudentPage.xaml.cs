@@ -41,5 +41,10 @@ namespace SchoolDatabase
         {
             this.Frame.Navigate(typeof(StudentChangePasswordPage));
         }
+
+        private void DisplayYourInformationListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

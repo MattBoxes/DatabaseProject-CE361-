@@ -9,18 +9,48 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-       
+
         <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="40" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
-       
+
         <Button x:Name="EnrollInCourseButton" Content="Enroll in Course" HorizontalAlignment="Left" Margin="155,168,0,0" VerticalAlignment="Top" Height="44" Width="164" FontWeight="Normal" FontSize="20" Click="EnrollInCourseButton_Click"/>
-      
+
         <Button x:Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="376,168,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="178" Click="ChangePasswordButton_Click"/>
 
-        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" HorizontalAlignment="Left" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="250" FontSize="20" FontWeight="Normal"/>
-       
-        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="510" Margin="155,380,0,0" VerticalAlignment="Top" Width="1190"/>
-      
+        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" HorizontalAlignment="Left" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="699" FontSize="20" FontWeight="Normal"/>
+
+        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="556,349,0,0" VerticalAlignment="Top" Width="297.5" BorderThickness="2,2,2,2" BorderBrush="Black" SelectionChanged="DisplayYourInformationListView_SelectionChanged">
+
+            <ListView.HeaderTemplate>
+                <DataTemplate>
+                    <Grid Padding="12" Background="{ThemeResource SystemBaseLowColor}" Height="49">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="297.5"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="Courses" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.HeaderTemplate>
+            <ListView.ItemTemplate>
+                <DataTemplate x:Name="TableDataTemplate">
+                    <Grid Height="48">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="297.5"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="" />
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+        <TextBlock x:Name="FirstNameTextBlock" HorizontalAlignment="Left" Margin="155,367,0,0" Text="First Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="UserFirstNameTextBlock" HorizontalAlignment="Left" Margin="155,399,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+        <TextBlock x:Name="LastNameTextBlock" HorizontalAlignment="Left" Margin="155,478,0,0" Text="Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="UserLastNameTextBlock" HorizontalAlignment="Left" Margin="155,510,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+        <TextBlock x:Name="UserIDTextBlock" HorizontalAlignment="Left" Margin="155,589,0,0" Text="User ID" TextWrapping="Wrap" VerticalAlignment="Top" Height="29" FontSize="20" FontWeight="Bold"/>
+        <TextBlock x:Name="UserUserIDTextBlock" HorizontalAlignment="Left" Margin="155,621,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="44" Width="300"/>
+
         <!--<Border BorderBrush="Black" HorizontalAlignment="Center" Height="1000" VerticalAlignment="Center" Width="1500" BorderThickness="2,2,2,2" Margin="0,0,0,0"/>-->
-   
+
     </Grid>
 </Page>
