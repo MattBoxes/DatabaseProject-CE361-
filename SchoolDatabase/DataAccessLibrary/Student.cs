@@ -41,8 +41,6 @@ namespace DataAccessLibrary
         /// Object requirement #1 - CompareTo()
         /// Compare: last names -> first names -> Id
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public int CompareTo(Student obj)
         {
             if (obj == null)
@@ -68,7 +66,6 @@ namespace DataAccessLibrary
         /// Object requirment #3 - ToString()
         /// Show contents for the student
         /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {       
             if ((this.FirstName != null) && (this.LastName != null))   
@@ -76,12 +73,6 @@ namespace DataAccessLibrary
             else
                 return $"Null character entered";
         }
-
-       
-
-
-
-
 
         /// <summary>
         /// Using relations in database, retrieve a list of Courses that this Student enrolls in
@@ -194,7 +185,5 @@ namespace DataAccessLibrary
 
             return courseList;
         }
-
-        
     }
 }

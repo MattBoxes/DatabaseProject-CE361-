@@ -24,8 +24,6 @@ namespace DataAccessLibrary
         /// <summary>
         /// Constructor for Course Class. Creates the Course Name and ID.
         /// </summary>
-        /// <param name="inName"></param>
-        /// <param name="inID"></param>
         public Course(string inName, string inID, int profid, int grade)
         {
             this.Name = inName;
@@ -34,14 +32,10 @@ namespace DataAccessLibrary
             this.GradePoint = grade;
         }
 
-
-
         /// <summary>
         /// Implemention of the Equals operator, checking for Course Name and ID
         /// equality.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj is Course && obj != null)
@@ -57,6 +51,7 @@ namespace DataAccessLibrary
         {
             return base.GetHashCode();
         }
+
         /// <summary>
         /// Method to display a popup window when entering invalid course information
         /// </summary>
@@ -69,12 +64,11 @@ namespace DataAccessLibrary
             };
             ContentDialogResult result = await InvalidEntry.ShowAsync();
         }
+
         /// <summary>
         /// CompareTo Implementation of IComparable Interface that compares by Course Name First, then the
         /// unique Course ID, if the parent name is of the same major/degree.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public int CompareTo(Course obj)
         {
             if (obj == null)
@@ -91,10 +85,10 @@ namespace DataAccessLibrary
                 return Name.CompareTo(obj.Name);
             }
         }
+
         /// <summary>
         /// Returns the string of the Course Name and ID
         /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             if ((this.Name != null) && (this.Id != null))

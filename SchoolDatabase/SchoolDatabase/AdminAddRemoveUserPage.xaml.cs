@@ -168,7 +168,7 @@ namespace SchoolDatabase
             {
                 ContentDialog InvalidEntry = new ContentDialog
                 {
-                    Title = "Select type of user to add.",
+                    Title = "Select type of user to display.",
                     CloseButtonText = "OK"
                 };
                 ContentDialogResult result = await InvalidEntry.ShowAsync();

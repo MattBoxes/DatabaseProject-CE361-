@@ -13,7 +13,7 @@ namespace DataAccessLibrary
     /// Passwords for each user, as well as implements some universal methods, including
     /// for the IComparable interfaces unique to the child classes.
     /// </summary>
-    public class People
+    public class People: IComparable<People>
     {
         public string FirstName { get; set; }
 
@@ -30,13 +30,12 @@ namespace DataAccessLibrary
             this.Id = id;
             this.Password = pw;
         }
+
         /// <summary>
         /// Implemention of the Equals operator for all Users, 
         /// checking for the users First and Last Name and ID
         /// equality.
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
         public override bool Equals(object obj)
         {
             if (obj is People && obj != null)
@@ -53,11 +52,11 @@ namespace DataAccessLibrary
         {
             return base.GetHashCode();
         }
+
         /// <summary>
         /// Returns the string of the User's First Name,
         /// Last Name, and ID.
         /// </summary>
-        /// <returns></returns>
         public override string ToString()
         {
             if ((this.FirstName != null) && (this.LastName != null))
@@ -65,6 +64,10 @@ namespace DataAccessLibrary
             else
                 return $"Null character entered";
         }
-        
+
+        public int CompareTo(People other)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
