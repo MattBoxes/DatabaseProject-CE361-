@@ -26,13 +26,8 @@ namespace SchoolDatabase
     /// </summary>
     public sealed partial class AdminPage : Page
     {
-        
         Admin adminInUse;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             string param_id = (string) e.Parameter;
@@ -58,21 +53,33 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Navigates to LoginPage when the Back button is clicked.
+        /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
         }
 
+        /// <summary>
+        /// Navigates to AdminAddRemoveCoursePage when the AddCourse button is clicked.
+        /// </summary>
         private void AddCourseButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdminAddRemoveCoursePage), adminInUse.Id.ToString());
         }
 
+        /// <summary>
+        /// Navigates to AdminAddRemoveUserPage when the AddRemoveUser button is clicked.
+        /// </summary>
         private void AddRemoveUserButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdminAddRemoveUserPage), adminInUse.Id.ToString());
         }
 
+        /// <summary>
+        /// Navigates to AdminAddRemoveCoursesProfessorPage when the AddRemoveCoursesProfessor button is clicked.
+        /// </summary>
         private void AddRemoveCoursesProfessorButton_Click(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage), adminInUse.Id.ToString());
