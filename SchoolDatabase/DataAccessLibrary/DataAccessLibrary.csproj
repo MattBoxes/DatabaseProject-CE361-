@@ -108,6 +108,7 @@
   <ItemGroup>
     <Compile Include="Admin.cs" />
     <Compile Include="Course.cs" />
+    <Compile Include="CourseAndGrade.cs" />
     <Compile Include="DataAccess.cs" />
     <Compile Include="Grade.cs" />
     <Compile Include="People.cs" />

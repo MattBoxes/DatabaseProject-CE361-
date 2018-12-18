@@ -80,7 +80,6 @@ namespace DataAccessLibrary
         /// <returns>A List of Course</returns>
         public List<Course> GetCourses()
         {
-            List<string> Grades = new List<string>();
             List<string> StudentIDs = new List<string>();
             List<string> CourseIDsfromGrade = new List<string>();
             List<string> CourseIDsfromCourse = new List<string>();
@@ -98,15 +97,6 @@ namespace DataAccessLibrary
                 while (query.Read())
                 {
                     StudentIDs.Add(query.GetString(0));
-                }
-
-                selectCommand = new SqliteCommand("SELECT GradePoint FROM Grade", db);
-
-                query = selectCommand.ExecuteReader();
-
-                while (query.Read())
-                {
-                    Grades.Add(query.GetString(0));
                 }
 
                 selectCommand = new SqliteCommand("SELECT Course_ID FROM Grade", db);
@@ -149,13 +139,6 @@ namespace DataAccessLibrary
                 db.Close();
             }
 
-            List<string> thisStudentGrades = new List<string>();
-            for (int i = 0; i < StudentIDs.Count; i++)
-            {
-                if (StudentIDs[i] == this.Id.ToString())
-                    thisStudentGrades.Add(Grades[i]);
-            }
-
 
             List<string> thisStudentCoursesIDs = new List<string>();
             for (int i = 0; i < StudentIDs.Count; i++)
@@ -180,10 +163,72 @@ namespace DataAccessLibrary
 
             List<Course> courseList = new List<Course>();
             for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
-                courseList.Add(new Course(thisStudentCoursesNames[i], thisStudentCoursesIDs[i], Int32.Parse(thisStudentProfIds[i]), Int32.Parse(thisStudentGrades[i])));
+                courseList.Add(new Course(thisStudentCoursesNames[i], thisStudentCoursesIDs[i], Int32.Parse(thisStudentProfIds[i])));
             
 
             return courseList;
+        }
+
+        public List<Grade> GetGrades()
+        {
+            List<Grade> gradeList = new List<Grade>();
+            List<string> Grades = new List<string>();
+            List<string> StudentIDs = new List<string>();
+            List<string> CourseIDsfromGrade = new List<string>();
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Student_ID FROM Grade", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    StudentIDs.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT GradePoint FROM Grade", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    Grades.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Course_ID FROM Grade", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIDsfromGrade.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            List<string> thisStudentGrades = new List<string>();
+            for (int i = 0; i < StudentIDs.Count; i++)
+            {
+                if (StudentIDs[i] == this.Id.ToString())
+                    thisStudentGrades.Add(Grades[i]);
+            }
+
+            List<string> thisStudentCoursesIDs = new List<string>();
+            for (int i = 0; i < StudentIDs.Count; i++)
+            {
+                if (StudentIDs[i] == this.Id.ToString())
+                    thisStudentCoursesIDs.Add(CourseIDsfromGrade[i]);
+            }
+
+            for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
+            {
+                gradeList.Add(new Grade(thisStudentCoursesIDs[i], this.Id, Int32.Parse(thisStudentGrades[i])));
+            }
+
+            return gradeList;
         }
     }
 }

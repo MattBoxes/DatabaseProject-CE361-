@@ -10,7 +10,16 @@ namespace DataAccessLibrary
     {
         public string CourseID { get; set; }
         public int StudentID { get; set; }
-        public short GradePoint { get; set; }
+        public int GradePoint { get; set; }
+
+        public Grade(string courseid, int studentid, int point)
+        {
+            this.CourseID = courseid;
+            this.StudentID = studentid;
+            this.GradePoint = point;
+        }
 
     }
+
+    
 }

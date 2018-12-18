@@ -58,7 +58,7 @@ namespace SchoolDatabase
 
         private void RemoveCourseButton_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void AddCourseButton_Click(object sender, RoutedEventArgs e)
@@ -68,9 +68,9 @@ namespace SchoolDatabase
 
         private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)
         {
-            //List<Course> cList = new List<Course>();
-            //cList = adminInUse.GetListOfCourses();
-            //RemoveCourseListView.ItemsSource = cList;
+            List<Course> cList = new List<Course>();
+            cList = adminInUse.GetListOfCourses();
+            RemoveCourseListView.ItemsSource = cList;
         }
     }
 }

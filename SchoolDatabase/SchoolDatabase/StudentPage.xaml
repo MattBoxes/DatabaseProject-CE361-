@@ -5,6 +5,7 @@
     xmlns:local="using:SchoolDatabase"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:DataAccessLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -16,9 +17,9 @@
 
         <Button x:Name="ChangePasswordButton" Content="Change Password" HorizontalAlignment="Left" Margin="376,168,0,0" VerticalAlignment="Top" Height="44" FontSize="20" FontWeight="Normal" Width="178" Click="ChangePasswordButton_Click"/>
 
-        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="844" FontSize="20" FontWeight="Normal" HorizontalAlignment="Left"/>
+        <Button x:Name="DisplayYourInformationButton" Content="Display Your Information" Margin="155,268,0,0" VerticalAlignment="Top" Height="44" Width="844" FontSize="20" FontWeight="Normal" HorizontalAlignment="Left" Click="DisplayYourInformationButton_Click"/>
 
-        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black" SelectionChanged="DisplayYourInformationListView_SelectionChanged">
+        <ListView x:Name="DisplayYourInformationListView" HorizontalAlignment="Left" Height="530" Margin="524,353,0,0" VerticalAlignment="Top" Width="475" BorderThickness="2,2,2,2" BorderBrush="Black">
 
             <ListView.HeaderTemplate>
                 <DataTemplate>
@@ -33,15 +34,15 @@
                 </DataTemplate>
             </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
-                <DataTemplate x:Name="TableDataTemplate">
+                <DataTemplate x:Name="TableDataTemplate" x:DataType="local1:CourseAndGrade">
                     <Grid Height="48">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="297.5"/>
                             <ColumnDefinition Width="177.5"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="" />
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="" />
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind CourseName}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind GradeInClass}" />
 
                     </Grid>
                 </DataTemplate>

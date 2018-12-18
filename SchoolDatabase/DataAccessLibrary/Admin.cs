@@ -227,6 +227,28 @@ namespace DataAccessLibrary
             return CourseIDs;
         }
 
+        private List<string> GetListOfProfIDs()
+        {
+            List<string> ProfIDs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    ProfIDs.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+            return ProfIDs;
+        }
+
         /// <summary>
         /// Get a List of Courses from database
         /// Calls helper functions GetListOfCourseIDs and GetListOfCourseNames
@@ -238,10 +260,12 @@ namespace DataAccessLibrary
 
             List<string> courseIDs = GetListOfCourseIDs();
             List<string> courseNames = GetListOfCourseNames();
+            List<string> profIDs = GetListOfProfIDs();
+
             int i = 0;
             foreach (string s in courseIDs)
             {
-                courseList[i] = new Course(courseNames[i], courseIDs[i]);
+                courseList[i] = new Course(courseNames[i], courseIDs[i], Int32.Parse(profIDs[i]));
                 i++;
             }
 

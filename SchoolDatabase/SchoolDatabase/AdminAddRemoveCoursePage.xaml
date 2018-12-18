@@ -5,6 +5,7 @@
     xmlns:local="using:SchoolDatabase"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local1="using:DataAccessLibrary"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -31,22 +32,22 @@
                             <ColumnDefinition Width="285.5"/>
                             <ColumnDefinition Width="285.5"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Courses" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
-                        <TextBlock Grid.Column="1" Text="Professor" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
+                        <TextBlock Grid.Column="0" Text="Course ID" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                        <TextBlock Grid.Column="1" Text="Course Name" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
                     </Grid>
                 </DataTemplate>
             </ListView.HeaderTemplate>
             <ListView.ItemTemplate>
-                <DataTemplate x:Name="TableDataTemplate">
+                <DataTemplate x:Name="TableDataTemplate" x:DataType="local1:Course">
                     <Grid Height="48">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="285.5"/>
                             <ColumnDefinition Width="285.5"/>
                         </Grid.ColumnDefinitions>
 
-                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="" />
-                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="" />
+                        <TextBlock Grid.Column="0" VerticalAlignment="Center" Text="{x:Bind Id}" />
+                        <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{x:Bind Name}" />
 
                     </Grid>
                 </DataTemplate>

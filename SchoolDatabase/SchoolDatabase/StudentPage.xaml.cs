@@ -26,6 +26,8 @@ namespace SchoolDatabase
 
         Student studentInUse;
 
+       
+
         public StudentPage()
         {
             this.InitializeComponent();
@@ -39,15 +41,13 @@ namespace SchoolDatabase
             List<string> student_lasts = DataAccess.GetData("Student", "Last_Name");
             List<string> student_firsts = DataAccess.GetData("Student", "First_Name");
 
-            int countid = 0;
-            foreach (string id in student_ids)
+            
+            for (int i = 0; i < student_ids.Count; i++)
             {
-                if (param_id == id)
+                if (param_id == student_ids[i])
                 {
-                    studentInUse = new Student(student_firsts[countid], student_lasts[countid], Int32.Parse(id), student_passwords[countid]);
-                    break;
+                    studentInUse = new Student(student_firsts[i], student_lasts[i], Int32.Parse(param_id), student_passwords[i]);
                 }
-                countid++;
             }
         }
 
@@ -71,6 +71,18 @@ namespace SchoolDatabase
             UserFirstNameTextBlock.Text = studentInUse.FirstName;
             UserLastNameTextBlock.Text = studentInUse.LastName;
             UserUserIDTextBlock.Text = (studentInUse.Id).ToString();
+
+            List<Course> cList = studentInUse.GetCourses();
+            List<Grade> gList = studentInUse.GetGrades();
+            List<CourseAndGrade> cgList = new List<CourseAndGrade>();
+            for (int i = 0; i < cList.Count; i++)
+            {
+                cgList.Add(new CourseAndGrade(cList[i].Name, gList[i].GradePoint));
+            }
+            DisplayYourInformationListView.ItemsSource = cgList;
+
         }
+
+      
     }
 }
