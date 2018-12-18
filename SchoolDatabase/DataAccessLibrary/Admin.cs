@@ -199,7 +199,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name FROM Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -214,6 +214,11 @@ namespace DataAccessLibrary
             return CourseNames;
         }
 
+
+        /// <summary>
+        /// Helper function to get values of Course_ID from Course Table
+        /// </summary>
+        /// <returns></returns>
         private List<string> GetListOfCourseIDs()
         {
             List<string> CourseIDs = new List<string>();
@@ -222,7 +227,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID from Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID FROM Course", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -236,7 +241,12 @@ namespace DataAccessLibrary
             return CourseIDs;
         }
 
-        public List<string> ViewListOfCourses()
+        /// <summary>
+        /// Get a List of Courses from database
+        /// Calls helper functions GetListOfCourseIDs and GetListOfCourseNames
+        /// </summary>
+        /// <returns></returns>
+        public List<Course> GetListOfCourses()
         {
             List<Course> courseList = new List<Course>();
 
@@ -249,21 +259,231 @@ namespace DataAccessLibrary
                 i++;
             }
 
-            i = 0;
-            List<string> ctlList = new List<string>();
-            foreach (Course course in courseList)
+            return courseList;
+        }
+
+        private List<int> GetListOfStudentIDs()
+        {
+            List<int> StudentIDs = new List<int>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
-                ctlList[i] = courseList[i].ToString();
-                i++;
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Student_ID FROM Student", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    StudentIDs.Add(Int32.Parse(query.GetString(0)));
+                }
+
+                db.Close();
+            }
+            return StudentIDs;
+        }
+
+        private List<string> GetListOfStudentFirstNames()
+        {
+            List<string> firstNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT First_Name FROM Student", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    firstNames.Add(query.GetString(0));
+                }
+
+                db.Close();
             }
 
-            return ctlList;
+            return firstNames;
         }
 
-        public void ViewListOfUsers()
+        private List<string> GetListOfStudentLastNames()
         {
-            throw new NotImplementedException();
+            List<string> lastNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Last_Name FROM Student", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    lastNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return lastNames;
         }
+
+        private List<string> GetListOfStudentPasswords()
+        {
+            List<string> passwords = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Password FROM Student", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    passwords.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return passwords;
+        }
+
+        public List<People> GetListOfStudents()
+        {
+            List<People> studentList = new List<People>();
+
+            List<int> studentIDs = GetListOfStudentIDs();
+            List<string> studentPasswords = GetListOfStudentPasswords();
+            List<string> studentFirstNames = GetListOfStudentFirstNames();
+            List<string> studentLastNames = GetListOfStudentLastNames();
+
+           
+            for (int i = 0; i < studentIDs.Count; i++)
+            {
+                studentList.Add(new People(studentFirstNames[i], studentLastNames[i], studentIDs[i], studentPasswords[i]));
+            }
+
+            return studentList;
+        }
+
+
+
+        private List<int> GetListOfProfessorIDs()
+        {
+            List<int> ProfessorIDs = new List<int>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Professor_ID from Professor", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    ProfessorIDs.Add(Int32.Parse(query.GetString(0)));
+                }
+
+                db.Close();
+            }
+            return ProfessorIDs;
+        }
+
+        private List<string> GetListOfProfessorFirstNames()
+        {
+            List<string> firstNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT First_Name from Professor", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    firstNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return firstNames;
+        }
+
+        private List<string> GetListOfProfessorLastNames()
+        {
+            List<string> lastNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Last_Name from Professor", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    lastNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return lastNames;
+        }
+
+        private List<string> GetListOfProfessorPasswords()
+        {
+            List<string> passwords = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Password from Professor", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    passwords.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return passwords;
+        }
+
+        public List<People> GetListOfProfessors()
+        {
+            List<People> profList = new List<People>();
+
+            List<int> profIDs = GetListOfProfessorIDs();
+            List<string> profPasswords = GetListOfProfessorPasswords();
+            List<string> profFirstNames = GetListOfProfessorFirstNames();
+            List<string> profLastNames = GetListOfProfessorLastNames();
+
+       
+            for(int i = 0; i < profIDs.Count; i++)
+            {
+                profList.Add(new People(profFirstNames[i], profLastNames[i], profIDs[i], profPasswords[i]));
+            }
+
+            return profList;
+        }
+
+        
+        
 
         public void EditStudentMajor(string firstname, string lastname, string newMajor)
         {

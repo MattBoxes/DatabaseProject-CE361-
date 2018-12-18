@@ -53,7 +53,7 @@ namespace SchoolDatabase
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AdminPage));
+            this.Frame.Navigate(typeof(AdminPage), adminInUse.Id.ToString());
         }
 
         private async void AddUserButton_ClickAsync(object sender, RoutedEventArgs e)
@@ -152,9 +152,27 @@ namespace SchoolDatabase
             }
         }
 
-        private void DisplayUsersButton_Click(object sender, RoutedEventArgs e)
+        private async void DisplayUsersButton_ClickAsync(object sender, RoutedEventArgs e)
         {
-        
+            if (SelectUserTypeToRemoveComboBox.SelectedIndex == 0)
+            {
+                List<People> pList = adminInUse.GetListOfProfessors();
+                RemoveUserListView.ItemsSource = pList;
+            }
+            else if (SelectUserTypeToRemoveComboBox.SelectedIndex == 1)
+            {
+                List<People> sList= adminInUse.GetListOfStudents();
+                RemoveUserListView.ItemsSource = sList;
+            }
+            else
+            {
+                ContentDialog InvalidEntry = new ContentDialog
+                {
+                    Title = "Select type of user to add.",
+                    CloseButtonText = "OK"
+                };
+                ContentDialogResult result = await InvalidEntry.ShowAsync();
+            }
         }
 
         string selectedIndex;
