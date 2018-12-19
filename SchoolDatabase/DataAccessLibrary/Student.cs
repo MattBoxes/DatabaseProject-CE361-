@@ -13,7 +13,7 @@ namespace DataAccessLibrary
     /// </summary>
     public class Student : People, IComparable<Student>
     {
-        List<People> ListOfUsers;
+        
 
         /// <summary>
         /// Constructor for Student class.
@@ -105,7 +105,7 @@ namespace DataAccessLibrary
             List<string> StudentIDs = new List<string>();
             List<string> CourseIDsfromGrade = new List<string>();
             List<string> CourseIDsfromCourse = new List<string>();
-            List<string> CourseNames = new List<string>();
+            List<string> CourseNamesfromCourse = new List<string>();
             List<string> ProfIdsfromCourse = new List<string>();
 
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -145,7 +145,7 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    CourseNames.Add(query.GetString(0));
+                    CourseNamesfromCourse.Add(query.GetString(0));
                 }
 
                 selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course", db);
@@ -170,18 +170,27 @@ namespace DataAccessLibrary
             }
 
             List<string> thisStudentCoursesNames = new List<string>();
-            for (int i = 0; i < CourseIDsfromCourse.Count; i++)
+            for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
             {
-                if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[i])
-                    thisStudentCoursesNames.Add(CourseNames[i]);
+                for (int j = 0; j < CourseIDsfromCourse.Count; j++)
+                {
+                    if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[j])
+                        thisStudentCoursesNames.Add(CourseNamesfromCourse[j]);
+                }
+                
             }
 
             List<string> thisStudentProfIds = new List<string>();
-            for (int i = 0; i < CourseIDsfromCourse.Count; i++)
+            for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
             {
-                if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[i])
-                    thisStudentProfIds.Add(ProfIdsfromCourse[i]);
+                for (int j = 0; j < CourseIDsfromCourse.Count; j++)
+                {
+                    if (thisStudentCoursesIDs[i] == CourseIDsfromCourse[j])
+                        thisStudentProfIds.Add(ProfIdsfromCourse[j]);
+                }
+
             }
+          
 
             List<Course> courseList = new List<Course>();
             for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
@@ -191,6 +200,115 @@ namespace DataAccessLibrary
             return courseList;
         }
 
+
+
+
+        /// <summary>
+        /// Helper function to get values of Course_ID from Course Table
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetListOfCourseIDs()
+        {
+            List<string> CourseIDs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID FROM Course ORDER BY Course_ID", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseIDs.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+            return CourseIDs;
+        }
+
+        /// <summary>
+        /// Helper function to get all values of the Course_Name column from Course Table
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetListOfCourseNames()
+        {
+            List<string> CourseNames = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name FROM Course ORDER BY Course_ID", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    CourseNames.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+
+            return CourseNames;
+        }
+
+
+        /// <summary>
+        ///  Helper function to get all values of the Professor_ID column from Course Table
+        /// </summary>
+        /// <returns></returns>
+        private List<string> GetListOfProfIDs()
+        {
+            List<string> ProfIDs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course ORDER BY Course_ID", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    ProfIDs.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+            return ProfIDs;
+        }
+
+        /// <summary>
+        /// Get a List of Courses from database
+        /// Calls helper functions GetListOfCourseIDs and GetListOfCourseNames and GetListOfProfIDs
+        /// </summary>
+        /// <returns></returns>
+        public List<Course> GetListOfCourses()
+        {
+            List<Course> courseList = new List<Course>();
+
+            List<string> courseIDs = GetListOfCourseIDs();
+            List<string> courseNames = GetListOfCourseNames();
+            List<string> profIDs = GetListOfProfIDs();
+
+
+            for (int i = 0; i < courseIDs.Count; i++)
+            {
+                courseList.Add(new Course(courseNames[i], courseIDs[i], Int32.Parse(profIDs[i])));
+            }
+
+            return courseList;
+        }
+
+        /// <summary>
+        /// Get grades using relations in database
+        /// </summary>
+        /// <returns></returns>
         public List<Grade> GetGrades()
         {
             List<Grade> gradeList = new List<Grade>();
@@ -216,7 +334,10 @@ namespace DataAccessLibrary
 
                 while (query.Read())
                 {
-                    Grades.Add(query.GetString(0));
+                    if (!query.IsDBNull(0))
+                        Grades.Add(query.GetString(0));
+                    else
+                        Grades.Add(" ");
                 }
 
                 selectCommand = new SqliteCommand("SELECT Course_ID FROM Grade", db);
@@ -245,12 +366,131 @@ namespace DataAccessLibrary
                     thisStudentCoursesIDs.Add(CourseIDsfromGrade[i]);
             }
 
+            int g;
+            bool ifSuccess; 
             for (int i = 0; i < thisStudentCoursesIDs.Count; i++)
             {
-                gradeList.Add(new Grade(thisStudentCoursesIDs[i], this.Id, Int32.Parse(thisStudentGrades[i])));
+                ifSuccess = Int32.TryParse(thisStudentGrades[i], out g);
+                gradeList.Add(new Grade(thisStudentCoursesIDs[i], this.Id, g));
             }
 
             return gradeList;
         }
+
+
+        public void EnrollinCourse(string courseid)
+        {
+            List<string> courseIDsList = new List<string>();
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand($"SELECT Course_ID FROM Course; ", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    courseIDsList.Add(query.GetString(0));
+                }
+
+                db.Close();
+            }
+            bool courseExist = false;
+            for (int i = 0; i < courseIDsList.Count; i++)
+            {
+                if (courseIDsList[i] == courseid)
+                {
+                    courseExist = true;
+                }
+            }
+            if (courseExist)
+            {
+                using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+                {
+                    db.Open();
+
+                    SqliteCommand insertCommand = new SqliteCommand();
+                    insertCommand.Connection = db;
+
+                    insertCommand.CommandText = "INSERT OR IGNORE INTO Grade (Course_ID, Student_ID) " +
+                                                            $"VALUES ('{courseid}', '{this.Id}')";
+
+                    insertCommand.ExecuteReader();
+
+                    db.Close();
+                }
+            }
+        }
+
+
+
+
+        public void ChangePassword(string oldPw, string newPw)
+        {
+
+            List<string> StudentIDs = new List<string>();
+            List<string> StudentPWs = new List<string>();
+
+            using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+            {
+                db.Open();
+
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Student_ID FROM Student", db);
+
+                SqliteDataReader query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    StudentIDs.Add(query.GetString(0));
+                }
+
+                selectCommand = new SqliteCommand("SELECT Password FROM Student", db);
+
+                query = selectCommand.ExecuteReader();
+
+                while (query.Read())
+                {
+                    StudentPWs.Add(query.GetString(0));
+                }
+                db.Close();
+            }
+
+            for (int i = 0; i < StudentIDs.Count; i++)
+            {
+                if (StudentIDs[i] == this.Id.ToString())
+                {
+                    if (oldPw == this.Password)
+                    {
+                        using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
+                        {
+                            db.Open();
+
+                            SqliteCommand updateCommand = new SqliteCommand();
+                            updateCommand.Connection = db;
+
+                            updateCommand.CommandText = "UPDATE Student " +
+                                                        $"SET Password = '{newPw}' " +
+                                                        $"WHERE Student_ID = {this.Id};";
+
+                            updateCommand.ExecuteReader();
+
+                            db.Close();
+                        }
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Wrong Password");
+                    }
+                }
+            
+            }
+            
+        }
+
+
+
+
+
     }
 }

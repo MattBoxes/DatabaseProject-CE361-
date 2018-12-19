@@ -10,17 +10,19 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
-        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="40" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
-        
-        <TextBlock x:Name="AddRemoveCourseTextBlock" HorizontalAlignment="Left" Margin="154,24,0,0" Text="Add/Remove Course" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="38" Height="44" Width="373"/>
-        
-        <TextBox x:Name="CourseIDTextBox" Text="" RequestedTheme="Light" Margin="152,172,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" Width="425" Height="44" PlaceholderText="Course ID" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        
-        <TextBox x:Name="CourseNameTextBox" Text="" RequestedTheme="Light" Margin="152,242,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" Height="45" PlaceholderText="Course Name" Visibility="Visible" Width="425" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
-        <Button x:Name="AddCourseButton" Content="Add Course" HorizontalAlignment="Left" Margin="154,313,0,0" VerticalAlignment="Top" Height="44" Width="127" FontWeight="Normal" FontSize="20" Click="AddCourseButton_Click"/>
-        
+        <Button x:Name="BackButton" Content="← Back" HorizontalAlignment="Left" Margin="27,27,0,0" VerticalAlignment="Top" Height="40" Width="75" Click="BackButton_Click" FontWeight="Bold" FontSize="15"/>
+
+        <TextBlock x:Name="AddRemoveCourseTextBlock" HorizontalAlignment="Left" Margin="154,24,0,0" Text="Add/Remove Course" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Adobe Caslon Pro Bold" FontSize="38" Height="44" Width="373"/>
+
+        <TextBox x:Name="CourseIDTextBox" Text="" RequestedTheme="Light" Margin="152,172,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" Width="425" Height="44" PlaceholderText="Course ID" Visibility="Visible" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="CourseNameTextBox" Text="" RequestedTheme="Light" Margin="152,242,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" Height="45" PlaceholderText="Course Name" Visibility="Visible" Width="425" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.499,1.911"/>
+
+        <TextBox x:Name="ProfessorIDTextBox" Text="" RequestedTheme="Light" Margin="152,312,0,0" FontFamily="Segoe UI" FontSize="24" Opacity="0.9" BorderThickness="2,2,2,2" Height="45" PlaceholderText="Professor ID" Visibility="Visible" Width="425" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.499,1.911"/>
+
+        <Button x:Name="AddCourseButton" Content="Add Course" HorizontalAlignment="Left" Margin="156,385,0,0" VerticalAlignment="Top" Height="44" Width="127" FontWeight="Normal" FontSize="20" Click="AddCourseButton_Click"/>
+
         <Button x:Name="DisplayCoursesButton" Content="Display Courses" HorizontalAlignment="Left" Margin="774,171,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44" Click="DisplayCoursesButton_Click"/>
 
         <ListView x:Name="RemoveCourseListView" Height="383" Margin="774,243,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="571" BorderThickness="2,2,2,2" BorderBrush="Black">
@@ -32,7 +34,7 @@
                             <ColumnDefinition Width="285.5"/>
                             <ColumnDefinition Width="285.5"/>
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="Course ID" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+                        <TextBlock Grid.Column="0" Text="Course ID" FontWeight="Bold" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,0,0,0" />
                         <TextBlock Grid.Column="1" Text="Course Name" Style="{ThemeResource CaptionTextBlockStyle}" FontSize="20" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,0"/>
 
                     </Grid>
@@ -56,6 +58,6 @@
         </ListView>
 
         <Button x:Name="RemoveCourseButton" Content="Remove Course" HorizontalAlignment="Left" Margin="774,659,0,0" VerticalAlignment="Top" Width="164" FontSize="20" FontWeight="Normal" Height="44" Click="RemoveCourseButton_Click"/>
-        
+
     </Grid>
 </Page>

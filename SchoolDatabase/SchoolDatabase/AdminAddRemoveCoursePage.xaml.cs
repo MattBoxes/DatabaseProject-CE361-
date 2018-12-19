@@ -56,17 +56,18 @@ namespace SchoolDatabase
         /// </summary>
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(AdminPage));
+            this.Frame.Navigate(typeof(AdminPage), adminInUse.Id.ToString());
         }
 
         private void RemoveCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            Course crs = (Course) RemoveCourseListView.SelectedItem;
+            adminInUse.RemoveCourse(crs.Id);
         }
 
         private void AddCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            adminInUse.AddCourse(CourseIDTextBox.Text, CourseNameTextBox.Text);
+            adminInUse.AddCourse(CourseIDTextBox.Text, CourseNameTextBox.Text, ProfessorIDTextBox.Text);
         }
 
         private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)

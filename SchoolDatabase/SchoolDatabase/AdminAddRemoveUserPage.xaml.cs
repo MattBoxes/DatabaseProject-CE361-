@@ -178,24 +178,13 @@ namespace SchoolDatabase
             }
         }
 
-        string selectedIndex;
-
-        private void RemoveUserListView_SelectedIndexChanged(object sender, EventArgs e)
+        private void RemoveUserButton_Click(object sender, RoutedEventArgs e)
         {
-            selectedIndex = "";
-
-            // Prevent errors when nothing was selected
-            if (RemoveUserListView.SelectedItems.Count > 0)
-            {
-                if (RemoveUserListView.SelectedItems[0] != null)
-                {
-                    selectedIndex = RemoveUserListView.SelectedItems[0].ToString();
-                }
-                else
-                {
-                    selectedIndex = "";
-                }
-            }
+            People ppl = (People) RemoveUserListView.SelectedItem;
+            if ((ppl.Id / 10000) == 8)
+                adminInUse.RemoveProfessor(ppl.Id);
+            else
+                adminInUse.RemoveStudent(ppl.Id);
         }
     }
 }

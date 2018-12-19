@@ -74,7 +74,7 @@
 
         </ListView>
 
-        <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="775,663,0,0" VerticalAlignment="Top" Height="44" Width="146" FontWeight="Normal" FontSize="20"/>
+        <Button x:Name="RemoveUserButton" Content="Remove User" HorizontalAlignment="Left" Margin="775,663,0,0" VerticalAlignment="Top" Height="44" Width="146" FontWeight="Normal" FontSize="20" Click="RemoveUserButton_Click"/>
 
     </Grid>
 </Page>

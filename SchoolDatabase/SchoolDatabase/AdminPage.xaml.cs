@@ -77,13 +77,7 @@ namespace SchoolDatabase
             this.Frame.Navigate(typeof(AdminAddRemoveUserPage), adminInUse.Id.ToString());
         }
 
-        /// <summary>
-        /// Navigates to AdminAddRemoveCoursesProfessorPage when the AddRemoveCoursesProfessor button is clicked.
-        /// </summary>
-        private void AddRemoveCoursesProfessorButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(AdminAddRemoveCoursesProfessorPage), adminInUse.Id.ToString());
-        }
+       
 
         private void DisplayCoursesButton_Click(object sender, RoutedEventArgs e)
         {
@@ -91,5 +85,30 @@ namespace SchoolDatabase
             cList = adminInUse.GetListOfCourses();
             DisplayCoursesListView.ItemsSource = cList;
         }
+
+        private async void DisplayUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (SelectUserTypeToDisplayComboBox.SelectedIndex == 0)
+            {
+                List<People> pList = adminInUse.GetListOfProfessors();
+                DisplayUsersListView.ItemsSource = pList;
+            }
+            else if (SelectUserTypeToDisplayComboBox.SelectedIndex == 1)
+            {
+                List<People> sList = adminInUse.GetListOfStudents();
+                DisplayUsersListView.ItemsSource = sList;
+            }
+            else
+            {
+                ContentDialog InvalidEntry = new ContentDialog
+                {
+                    Title = "Select type of user to display.",
+                    CloseButtonText = "OK"
+                };
+                ContentDialogResult result = await InvalidEntry.ShowAsync();
+            }
+        }
+
+        
     }
 }
