@@ -27,7 +27,7 @@ namespace DataAccessLibrary
         public People(string firstname, string lastname, int id, string pw)
         {
             this.FirstName = firstname;
-            this.LastName = LastName;
+            this.LastName = lastname;
             this.Id = id;
             this.Password = pw;
         }

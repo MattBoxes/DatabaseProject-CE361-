@@ -10,6 +10,7 @@ namespace DataAccessLibrary
     {
         public string CourseName { get; set; }
         public int GradeInClass { get; set; }
+
         public CourseAndGrade(string cname, int gr)
         {
             this.CourseName = cname;

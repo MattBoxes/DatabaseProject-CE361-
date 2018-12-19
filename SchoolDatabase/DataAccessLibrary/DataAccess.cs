@@ -107,7 +107,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand($"SELECT {column} FROM {table}", db);
+                SqliteCommand selectCommand = new SqliteCommand($"SELECT {column} FROM {table}; ", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 

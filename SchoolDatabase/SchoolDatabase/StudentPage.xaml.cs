@@ -31,21 +31,34 @@ namespace SchoolDatabase
             this.InitializeComponent();
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            string param_id = (string)e.Parameter;
-            List<string> student_ids = DataAccess.GetData("Student", "Student_ID");
-            List<string> student_passwords = DataAccess.GetData("Student", "Password");
-            List<string> student_lasts = DataAccess.GetData("Student", "Last_Name");
-            List<string> student_firsts = DataAccess.GetData("Student", "First_Name");
-
-            
-            for (int i = 0; i < student_ids.Count; i++)
+            if (e.Parameter is string && !string.IsNullOrWhiteSpace((string)e.Parameter))
             {
-                if (param_id == student_ids[i])
+                string param_id = (string)e.Parameter;
+                List<string> student_ids = DataAccess.GetData("Student", "Student_ID");
+                List<string> student_passwords = DataAccess.GetData("Student", "Password");
+                List<string> student_lasts = DataAccess.GetData("Student", "Last_Name");
+                List<string> student_firsts = DataAccess.GetData("Student", "First_Name");
+
+
+                for (int i = 0; i < student_ids.Count; i++)
                 {
-                    studentInUse = new Student(student_firsts[i], student_lasts[i], Int32.Parse(param_id), student_passwords[i]);
+                    if (param_id == student_ids[i])
+                    {
+                        studentInUse = new Student(student_firsts[i], student_lasts[i], Int32.Parse(param_id), student_passwords[i]);
+                    }
                 }
+            }
+            else
+            {
+                ContentDialog InvalidEntry = new ContentDialog
+                {
+                    Title = "Unable to load page",
+                    CloseButtonText = "OK"
+                };
+                ContentDialogResult result = await InvalidEntry.ShowAsync();
+                this.Frame.Navigate(typeof(LoginPage));
             }
         }
 
@@ -62,7 +75,7 @@ namespace SchoolDatabase
         /// </summary>
         private void EnrollInCourseButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentEnrollInClassPage));
+            this.Frame.Navigate(typeof(StudentEnrollInClassPage), studentInUse.Id.ToString());
         }
 
         /// <summary>
@@ -70,7 +83,7 @@ namespace SchoolDatabase
         /// </summary>
         private void ChangePasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(StudentChangePasswordPage));
+            this.Frame.Navigate(typeof(StudentChangePasswordPage), studentInUse.Id.ToString());
         }
 
         private void DisplayYourInformationButton_Click(object sender, RoutedEventArgs e)

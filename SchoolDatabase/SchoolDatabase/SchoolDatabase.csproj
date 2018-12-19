@@ -95,9 +95,6 @@
     <Compile Include="AdminAddRemoveCoursePage.xaml.cs">
       <DependentUpon>AdminAddRemoveCoursePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AdminAddRemoveCoursesProfessorPage.xaml.cs">
-      <DependentUpon>AdminAddRemoveCoursesProfessorPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="AdminAddRemoveUserPage.xaml.cs">
       <DependentUpon>AdminAddRemoveUserPage.xaml</DependentUpon>
     </Compile>
@@ -156,10 +153,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="AdminAddRemoveCoursePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="AdminAddRemoveCoursesProfessorPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

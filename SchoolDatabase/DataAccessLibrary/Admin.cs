@@ -13,8 +13,7 @@ namespace DataAccessLibrary
     /// </summary>
     public class Admin : People, IComparable<Admin>
     {
-        List<Course> ListOfCourses;
-        List<People> ListOfUsers;
+        
 
         /// <summary>
         /// Constructor for Admin class.
@@ -25,7 +24,7 @@ namespace DataAccessLibrary
         /// <summary>
         /// Insert into Course Table if Course ID does not exist yet, if already exists ignore the command
         /// </summary>
-        public void AddCourse(string courseID, string courseName)
+        public void AddCourse(string courseID, string courseName, string profid)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
             {
@@ -34,8 +33,8 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = "INSERT OR IGNORE INTO Course (Course_ID, Course_Name) " +
-                                                        $"VALUES ('{courseID}', '{courseName}')";
+                insertCommand.CommandText = "INSERT OR IGNORE INTO Course (Course_ID, Course_Name, Professor_ID) " +
+                                                        $"VALUES ('{courseID}', '{courseName}', '{profid}')";
 
                 insertCommand.ExecuteReader();
 
@@ -55,7 +54,7 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = $"DELETE FROM Course WHERE Course_ID = {courseID};";
+                insertCommand.CommandText = $"DELETE FROM Course WHERE Course_ID = '{courseID}';";
 
                 insertCommand.ExecuteReader();
 
@@ -63,14 +62,14 @@ namespace DataAccessLibrary
             }
         }
 
-        public void EditCourseName(string courseName, string newCourseName)
-        {
-            if ((courseName != null) && (newCourseName != null))
-            {
-                throw new NotImplementedException();
-            }
-        }
-
+        
+        /// <summary>
+        /// Insert a student row in Student table in databse
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="id"></param>
+        /// <param name="pw"></param>
         public void AddStudent(string firstname, string lastname, int id, string pw)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -89,6 +88,14 @@ namespace DataAccessLibrary
             }
         }
 
+
+        /// <summary>
+        /// Insert a Professor row to Professor Table in database
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="id"></param>
+        /// <param name="pw"></param>
         public void AddProfessor(string firstname, string lastname, int id, string pw)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -107,6 +114,11 @@ namespace DataAccessLibrary
             }
         }
 
+
+        /// <summary>
+        /// Uses professor ID to remove that row from databse
+        /// </summary>
+        /// <param name="profID"></param>
         public void RemoveProfessor(int profID)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -124,6 +136,11 @@ namespace DataAccessLibrary
             }
         }
 
+
+        /// <summary>
+        /// Uses student ID to remove that row from database
+        /// </summary>
+        /// <param name="studentID"></param>
         public void RemoveStudent(int studentID)
         {
             using (SqliteConnection db = new SqliteConnection("Filename=schoolDB.db"))
@@ -133,7 +150,7 @@ namespace DataAccessLibrary
                 SqliteCommand insertCommand = new SqliteCommand();
                 insertCommand.Connection = db;
 
-                insertCommand.CommandText = $"DELETE FROM Course WHERE Course_ID = {studentID};";
+                insertCommand.CommandText = $"DELETE FROM Student WHERE Student_ID = {studentID};";
 
                 insertCommand.ExecuteReader();
 
@@ -141,30 +158,9 @@ namespace DataAccessLibrary
             }
         }
 
-        public void EditUserName(string nfirstName, string nlastname, string firstname, string lastname)
-        {
-            throw new NotImplementedException();
-        }
 
-        public void EditStudentGrade(string firstname, string lastname, string coursename, string newGrade)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddStudentToCourse(string firstname, string lastname, string coursename)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void AddProfToCourse(string firstname, string lastname, string coursename)
-        {
-            throw new NotImplementedException();
-        }
       
-        public void RemoveStudentFromCourse(string firstname, string lastname, string coursename)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void RemoveProfFromCourse(string firstname, string lastname, string coursename)
         {
@@ -183,7 +179,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name FROM Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_Name FROM Course ORDER BY Course_ID;", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -210,7 +206,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID FROM Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Course_ID FROM Course ORDER BY Course_ID;", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -232,7 +228,7 @@ namespace DataAccessLibrary
             {
                 db.Open();
 
-                SqliteCommand selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course", db);
+                SqliteCommand selectCommand = new SqliteCommand("SELECT Professor_ID FROM Course ORDER BY Course_ID;", db);
 
                 SqliteDataReader query = selectCommand.ExecuteReader();
 
@@ -245,6 +241,7 @@ namespace DataAccessLibrary
             }
             return ProfIDs;
         }
+
 
         /// <summary>
         /// Get a List of Courses from database
@@ -259,16 +256,19 @@ namespace DataAccessLibrary
             List<string> courseNames = GetListOfCourseNames();
             List<string> profIDs = GetListOfProfIDs();
 
-            int i = 0;
-            foreach (string s in courseIDs)
+            for (int i = 0; i < courseIDs.Count; i++)
             {
-                courseList[i] = new Course(courseNames[i], courseIDs[i], Int32.Parse(profIDs[i]));
-                i++;
+                courseList.Add(new Course(courseNames[i], courseIDs[i], Int32.Parse(profIDs[i])));
             }
 
             return courseList;
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         private List<int> GetListOfStudentIDs()
         {
             List<int> StudentIDs = new List<int>();
